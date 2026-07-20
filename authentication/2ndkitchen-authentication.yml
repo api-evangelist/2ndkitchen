@@ -1,0 +1,19 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/2ndkitchen-businessservice.yaml, openapi/2ndkitchen-paymentservice.yaml, openapi/2ndkitchen-restaurantservice.yaml,
+  openapi/2ndkitchen-userservice.yaml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: In order to use Bond API, each request must be authenticated with an API key.
+    The API key should be sent with each request in the header section with the header
+  sources:
+  - openapi/2ndkitchen-businessservice.yaml
+  - openapi/2ndkitchen-paymentservice.yaml
+  - openapi/2ndkitchen-restaurantservice.yaml
+  - openapi/2ndkitchen-userservice.yaml
