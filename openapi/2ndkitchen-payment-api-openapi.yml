@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: 2ndKitchen - Service Authentication Payment API
+  version: '1.0'
+servers:
+- url: https://auth-staging.2ndkitchen.com
+  description: staging
+tags:
+- name: Payment
+paths:
+  /users/{user_id}/payment_methods:
+    get:
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        required: true
+        name: user_id
+        description: The id for the user
+        example: 2
+        schema:
+          type: string
+      description: Get user payment methods
+      tags:
+      - Payment
+      responses:
+        '200':
+          description: Returns user payment methods
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: ok
+                  data:
+                    type: object
+                    properties:
+                      payment_methods:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/UserPaymentMethod'
+components:
+  schemas:
+    UserPaymentMethod:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Payment method id
+        type:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          description: "Menu Delivery Mode:\n  * `1` - CREDIT_CARD  \n  * `2` - APPLE_PAY\n  * `3` - GOOGLE_PAY\n  * `4` - CASH\n"
+        user_id:
+          type: integer
+          description: User id
+        provider_id:
+          type: integer
+          description: Payment provider id
+        external_id:
+          type: integer
+          description: Payment method external id
+        external_user_id:
+          type: integer
+          description: Payment Method external user id
+        card_brand:
+          type: string
+          description: Brand of payment card
+        card_last_4_digits:
+          type: string
+          description: last four digits of card
+        card_exp_month:
+          type: integer
+          description: Month card expires
+        card_exp_year:
+          type: integer
+          description: Year card expires
+        is_default:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: Whether payment method is default or not
+        created_date:
+          type: string
+          description: Date payment method was created
+          format: YY-MM-DD HH:MM:SS.MS
+        is_deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: Whether user payment method is deleted

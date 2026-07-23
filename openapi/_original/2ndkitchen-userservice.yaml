@@ -1,0 +1,419 @@
+openapi: 3.0.0
+info:
+  title: 2ndKitchen - User Service 
+  version: '1.0'
+servers:
+  - url: https://user-staging.2ndkitchen.com
+    description: staging
+paths:
+  /user/me:
+    get:
+      security:
+          - bearerAuth: []
+      description: Get User object 
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Returns the user object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: 
+                    type: string
+                    example: 'ok'
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '#/components/schemas/User'  
+                
+        '400':
+          description: User Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: 
+                    description: 'User does not exist error'
+                    type: string
+                    example: User does not exist
+                           
+  /users/{user_id}/verify/v2:
+    parameters:
+      - in: path
+        required: true
+        name: user_id
+        description: The id for the user
+        example: 2
+        schema:
+          type: integer
+    post:
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - user_id
+                - phone_number
+              type: object
+              properties:
+                user_id:
+                  description: 'Id for user'
+                  type: integer
+                phone_number:
+                  description: 'User phone number'
+                  type: string
+      description: Verify a newly created user
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Returns success if the user was verified
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: 'ok'
+                
+                
+        '400':
+          description: User not found Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: 
+                    description: 'User not found error'
+                    type: string
+                    example: User not found
+        # '400':
+        #   description: Verification error
+        #   content:
+        #     application/json:
+        #       schema:
+        #         type: object
+        #         properties:
+        #           message: 
+        #             description: 'User already verified error'
+        #             type: string
+        #             example: User already verified
+        # '400':
+        #   description: Invalid phone number
+        #   content:
+        #     application/json:
+        #       schema:
+        #         type: object
+        #         properties:
+        #           message: 
+        #             description: 'Invalid phone number'
+        #             type: string
+        #             example: Invalid phone number
+        # '400':
+        #   description: Phone number already exists error
+        #   content:
+        #     application/json:
+        #       schema:
+        #         type: object
+        #         properties:
+        #           message: 
+        #             description: 'Phone number already exists'
+        #             type: string
+        #             example: Phone number already exists.
+                  
+  /users/{user_id}/verify_verification_code:
+    parameters:
+      - in: path
+        required: true
+        name: user_id
+        description: The id for the user
+        example: 2
+        schema:
+          type: integer
+    post:
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - user_id
+                - code
+              type: object
+              properties:
+                user_id:
+                  description: 'Id for user'
+                  type: integer
+                phone_number:
+                  description: 'Verification code'
+                  type: string
+      description: Verify user verification code
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Returns the user object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: 
+                    type: string
+                    example: 'ok'
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '#/components/schemas/User'  
+        '400':
+          description: Verification error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: 
+                    description: 'User already verified error'
+                    type: string
+                    example: User already verified
+        # '405':
+        #   description: Invalid phone number
+        #   content:
+        #     application/json:
+        #       schema:
+        #         type: object
+        #         properties:
+        #           message: 
+        #             description: 'Invalid phone number'
+        #             type: string
+        #             example: Invalid phone number
+        # '406':
+        #   description: Phone number already exists error
+        #   content:
+        #     application/json:
+        #       schema:
+        #         type: object
+        #         properties:
+        #           message: 
+        #             description: 'Phone number already exists'
+        #             type: string
+        #             example: Phone number already exists.
+                    
+  /users/{user_id}/activate:
+    parameters:
+      - in: path
+        required: true
+        name: user_id
+        description: The id for the user
+        example: 2
+        schema:
+          type: integer
+    post:
+      security:
+          - bearerAuth: []
+      description: Activate the user
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - user_id
+                - email
+                - first_name
+              type: object
+              properties:
+                user_id:
+                  description: 'User id'
+                  type: integer
+                email:
+                  description: 'User email'
+                  type: string
+                  example: 'jsmith@gmail.com'
+                first_name:
+                  description: 'User first name'
+                  type: string
+                  example: 'John'
+                last_name:
+                  description: 'User last name'
+                  type: string
+                  example: 'Smith'
+                apartment_number:
+                  description: 'User apartment number'
+                  type: integer
+                business_location_id:
+                  description: 'User business location id'
+                  type: integer
+      responses:
+        '200':
+          description: Returns the user object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: 
+                    type: string
+                    example: 'ok'
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '#/components/schemas/User'  
+        '400':
+          description: User Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: 
+                    description: 'User alright active error'
+                    type: string
+                    example: User is already active!
+        # '405':
+        #   description: User Error
+        #   content:
+        #     application/json:
+        #       schema:
+        #         type: object
+        #         properties:
+        #           message: 
+        #             description: 'User does not exist error'
+        #             type: string
+        #             example: User does not exist
+        # '406':
+        #   description: User Error
+        #   content:
+        #     application/json:
+        #       schema:
+        #         type: object
+        #         properties:
+        #           message: 
+        #             description: 'User not verified error'
+        #             type: string
+        #             example: User not verified
+        # '407':
+        #   description: User Error
+        #   content:
+        #     application/json:
+        #       schema:
+        #         type: object
+        #         properties:
+        #           message: 
+        #             description: 'Email already exists error'
+        #             type: string
+        #             example: Email already exists
+                    
+            
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id: 
+          description: 'User id'
+          type: integer
+        phone_number:
+          description: 'User phone number'
+          type: string
+        phone_number_e164:
+          description: 'User phone number in e164 format'
+          type: string
+        first_name:
+          description: 'User first name'
+          type: integer
+        last_name:
+          description: 'User last name'
+          type: integer
+        email:
+          description: 'User email'
+          type: string
+        apartment_number:
+          description: 'User apartment number'
+          type: integer
+        picture:
+          description: 'User picture url'
+          type: string
+        is_verified:
+          description: 'Whether user is verified (phone number verified)'
+          type: integer
+          enum: [0,1]
+        is_active:
+          description: 'Whether the user is activated (completed profile)'
+          type: integer
+          enum: [0,1]
+        is_deleted:
+          description: 'Whether the user is delted or not'
+          type: integer
+          enum: [0,1]
+        is_blacklisted:
+          description: 'Whether the user is delted or not'
+          type: integer
+          enum: [0,1]
+        last_verification_sent_date:
+          description: 'Last date user was sent a verifcation reminder'
+          type: string
+        sms_opt_in:
+          description: 'Whether the user opts in to getting sms'
+          type: integer
+          enum: [0,1]
+        business_id:
+          description: 'Id for user if they belong to a user'
+          type: integer
+        business_location_id:
+          description: 'User business location'
+          type: integer
+        created_date:
+          description: 'Date the user was created'
+          type: integer
+        verified_at:
+          description: 'Time the user was verified at'
+          type: string
+        activated_at:
+          description: 'Time the user was activated at'
+          type: string
+
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserNotification'
+
+    UserNotification:
+      type: object
+      properties:
+        id:
+          description: 'Notification id'
+          type: integer
+        user_id:
+          description: 'User id'
+          type: integer
+        type:
+          type: integer
+          enum: [1, 2]
+          description: >
+            Notification type:
+              * `0` - DAILY_MENU_SMS
+                * `1` - UPCOMING_EVENT_SMS
+
+
+  securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT

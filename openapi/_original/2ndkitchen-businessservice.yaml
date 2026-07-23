@@ -1,0 +1,473 @@
+openapi: 3.0.0
+info:
+  title: 2ndKitchen - Business Service 
+  version: '1.0'
+servers:
+  - url: https://business-staging.2ndkitchen.com
+    description: staging
+paths:
+  /businesses/{business_id}:
+    parameters:
+      - in: path
+        required: true
+        name: business_id
+        description: The id for the business
+        example: 988
+        schema:
+          type: integer
+      - in: query
+        name: include
+        description: Query string for objects on the business to include - menu, delivery_modes, etc.
+        schema:
+          type: string
+          enum: [menus, tip_options, opening_hours, delivery_modes]
+    get:
+      security:
+        - bearerAuth: []
+      description: Get a business
+      tags:
+        - Business
+      responses:
+        '200':
+          description: Returns a Business object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  business:
+                    $ref: '#/components/schemas/Business'
+
+components:
+  schemas:
+    Business:
+      type: object
+      properties:
+        address:
+          type: string
+          description: ''
+        admin_user_id:
+          type: integer
+          description: ''
+        allow_asap:
+          type: boolean
+          description: ''
+        city:
+          type: string
+          description: 'City'
+        commission:
+          type: number
+          description: ''
+        commission_threshold:
+          type: number
+          description: ''
+        country:
+          type: string
+          description: ''
+        currency_code:
+          type: string
+          description: ''
+        customer_pickup_area_instructions:
+          type: string
+          description: ''
+        delivery_mode:
+          type: integer
+          description: ''
+        dropoff_instructions:
+          type: string
+          description: ''
+        email:
+          type: string
+          description: ''
+        external_establishment_id:
+          type: integer
+          description: ''
+        external_establishment_name:
+          type: string
+          description: ''
+        external_location_id:
+          type: integer
+          description: ''
+        hub_location_id:
+          type: integer
+          description: ''
+        id:
+          type: integer
+          description: ''
+        img:
+          type: string
+          description: ''
+        is_active:
+          type: integer
+          description: ''
+          enum: [0,1]
+        is_deleted:
+          type: integer
+          description: ''
+          enum: [0,1]
+        latitude:
+          type: string
+          description: ''
+        launch_date:
+          type: string
+          description: ''
+        logo:
+          type: string
+          description: ''
+        longitude:
+          type: string
+          description: ''
+        main_url:
+          type: string
+          description: ''
+        markup_rules:
+          type: string
+          description: ''
+        min_order_amount:
+          type: number
+          description: ''
+        name:
+          type: string
+          description: ''
+        notes:
+          type: string
+          description: ''
+        notification_interval:
+          type: string
+          description: ''
+        opening_hours:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpeningHoursObj'
+        kiosks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Kiosk'
+        phone_number:
+          type: string
+          description: ''
+        pickup_area_instructions:
+          type: string
+          description: ''
+        review_link:
+          type: string
+          description: ''
+        service_fee:
+          type: number
+          description: ''
+        slug:
+          type: string
+          description: ''
+        state:
+          type: string
+          description: ''
+        stock_status:
+          type: integer
+          description: ''
+        tax:
+          type: number
+          description: ''
+        timezone:
+          type: string
+          description: ''
+        timezone_offset:
+          type: string
+          description: ''
+        tip_commission:
+          type: number
+          description: ''
+        tookan_team_id:
+          type: integer
+          description: ''
+        type:
+          type: integer
+          enum: [ 0, 1, 2, 3, 4]
+          description: >
+            Menu Type:
+             * `0` - BAR
+             * `1` - HOTEL
+             * `2` - RESIDENTIAL
+             * `3` - COWORKING_SPACE
+             * `4` - AIRPORT
+             * `5` - MSA
+        unit_count:
+          type: integer
+          description: ''
+        w9_uploaded:
+          type: boolean
+          description: ''
+        zip:
+          type: string
+          description: ''
+        menus:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessMenu'
+        delivery_modes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryMode'
+        tip_options:
+          type: array
+          items:
+            $ref: '#/components/schemas/TipOption'
+    OpeningHoursObj:
+      type: object
+      properties:
+        close_time:
+          type: string
+          description: 'Close time'
+          example: 20:00
+        open_time:
+          type: string
+          description: 'Open time'
+          example: 10:00
+        day_of_the_week:
+          type: integer
+          description: 'Days of the weeks starting Monday (0)'
+          enum: [0, 1, 2, 3, 4, 5, 6]
+    BusinessMenu:
+      type: object
+      properties:
+        courier_id:
+          type: integer
+          enum: [0, 1, 2, 3, 4]
+          description: >
+            Courier Type:
+             * `0` - WALKING
+             * `1` - TWIN_JET
+             * `2` - EATING_IN
+             * `4` - TOOKAN
+             * `5` - POSTMATES
+             * `6` - DOORDASH
+             * `7` - SKIPCART
+             * `8` - REEF
+             * `9` - RELAY
+        delivery_fee:
+          type: number
+          description: ''
+        delivery_mode:
+          type: integer
+          enum: [0, 1, 2, 3, 4]
+          description: >
+            Menu Type:
+             * `0` - DIRECT_TO_LOCATION
+             * `1` - YAY_FOOD_POLE
+             * `2` - PICKUP_AREA
+             * `3` - DIRECT_TO_CUSTOMER
+             * `4` - LAST_YARD_DELIVERY
+        delivery_range:
+          type: string
+          description: ''
+        event_id:
+          type: integer
+          description: ''
+        id:
+          type: integer
+          description: ''
+        is_backup:
+          type: integer
+          description: ''
+          enum: [0,1]
+        is_late_night:
+          type: integer
+          description: ''
+          enum: [0,1]
+        min_order_amount:
+          type: number
+          description: ''
+        name:
+          type: string
+          description: ''
+        pre_order_allowed:
+          type: integer
+          description: ''
+          enum: [0,1]
+        restaurant_commission:
+          type: number
+          description: ''
+        restaurant_id:
+          type: integer
+          description: ''
+        stock_status:
+          type: integer
+          description: ''
+          enum: [0,1]
+        stock_status_override:
+          type: boolean
+          description: ''
+        theme_id:
+          type: integer
+          description: ''
+        type:
+          type: integer
+          enum: [0, 1, 2, 3, 4, 5]
+          description: >
+            Menu Type:
+             * `0` - DEFAULT
+             * `1` - EVENT
+             * `2` - EMBEDDED
+             * `3` - DONATION
+             * `4` - ECOMMERCE
+             * `5` - PRE_PACKAGED
+        opening_hours:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpeningHoursObj'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessMenuProduct'
+        products_categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessMenuProductCategory'
+        payment_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentMethod'
+        delivery_modes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryMode'
+    PaymentMethod:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ''
+        type:
+          type: integer
+          enum: [1, 2, 3, 4, 5, 6]
+          description: >
+            Payment Method:
+             * `1` - CC
+             * `2` - APPLE
+             * `3` - GPAY
+             * `4` - CASH
+             * `5` - BUSINESS_BILLING
+             * `6` - DIRECT_TO_BILL
+    DeliveryMode:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ''
+        delivery_mode:
+          type: integer
+          enum: [0, 1, 2, 3, 4, 5]
+          description: >
+            Menu Type:
+             * `0` - DIRECT_TO_LOCATION
+             * `1` - YAY_FOOD_POLE
+             * `2` - PICKUP_AREA
+             * `3` - DIRECT_TO_CUSTOMER
+             * `4` - LAST_YARD_DELIVERY
+        is_default:
+          type: integer
+          description: ''
+          enum: [0,1]
+    Kiosk:
+      type: object
+      properties:
+        business_id:
+          type: integer
+          description: ''
+        name:
+          type: string
+          description: ''
+        last_seen:
+          type: string
+          description: ''
+        battery_status:
+          type: integer
+          description: ''
+        is_battery_charging:
+          type: integer
+          description: ''
+          enum: [0,1]
+        is_locked:
+          type: integer
+          description: ''
+          enum: [0,1]
+        external_id:
+          type: integer
+          description: ''
+        external_name:
+          type: string
+          description: ''
+        make:
+          type: string
+          description: ''
+        os_version:
+          type: string
+          description: ''
+        last_seen_external:
+          type: string
+          description: ''
+        is_active:
+          type: integer
+          description: ''
+          enum: [0,1]
+        payment_mode:
+          type: integer
+          enum: [1, 2, 3, 4, 5, 6]
+          description: >
+            Payment Method:
+             * `1` - CREDIT_CARD
+             * `2` - APPLE_PAY
+             * `3` - GOOGLE_PAY
+             * `4` - CASH
+             * `5` - BUSINESS_BILLING
+             * `6` - DIRECT_TO_BILL
+        is_default:
+          type: boolean
+          description: ''
+    TipOption:
+      type: object
+      properties:
+        value:
+          type: number
+          description: 'tip value'
+        is_default:
+          type: integer
+          description: 'is default tip option'
+          enum: [0,1]
+    BusinessMenuProduct:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: 'product id'
+        category_id:
+          type: integer
+          description: 'category id'
+        name:
+          type: string
+          description: 'product name'
+          example: 'The BBQ Sandwich'
+        position:
+          type: integer
+          description: 'product order position'
+        price:
+          type: number
+          description: 'product price'
+          format: float
+    BusinessMenuProductCategory:
+      type: object
+      properties:
+        category_id:
+          type: integer
+          description: 'category id'
+        name:
+          type: string
+          description: 'category name'
+        position:
+          type: integer
+          description: 'category order position'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: In order to use Bond API, each request must be authenticated with an API key. The API key should be sent with each request in the header section with the header

@@ -1,0 +1,36 @@
+{
+  "provider": "2ndkitchen",
+  "sources": [
+    "2ndkitchen-authentication-api-openapi.yml",
+    "2ndkitchen-brand-api-openapi.yml",
+    "2ndkitchen-business-api-openapi.yml",
+    "2ndkitchen-coupons-api-openapi.yml",
+    "2ndkitchen-deliveries-api-openapi.yml",
+    "2ndkitchen-orders-api-openapi.yml",
+    "2ndkitchen-payment-api-openapi.yml",
+    "2ndkitchen-product-api-openapi.yml",
+    "2ndkitchen-products-api-openapi.yml",
+    "2ndkitchen-restaurant-api-openapi.yml",
+    "2ndkitchen-restaurants-api-openapi.yml",
+    "2ndkitchen-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "2ndkitchen-authentication-api-openapi.yml",
+    "2ndkitchen-brand-api-openapi.yml",
+    "2ndkitchen-business-api-openapi.yml",
+    "2ndkitchen-coupons-api-openapi.yml",
+    "2ndkitchen-deliveries-api-openapi.yml",
+    "2ndkitchen-orders-api-openapi.yml",
+    "2ndkitchen-payment-api-openapi.yml",
+    "2ndkitchen-product-api-openapi.yml",
+    "2ndkitchen-products-api-openapi.yml",
+    "2ndkitchen-restaurant-api-openapi.yml",
+    "2ndkitchen-restaurants-api-openapi.yml",
+    "2ndkitchen-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

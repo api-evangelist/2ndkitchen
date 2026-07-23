@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: 2ndKitchen - Service Authentication Products API
+  version: '1.0'
+servers:
+- url: https://auth-staging.2ndkitchen.com
+  description: staging
+tags:
+- name: Products
+paths:
+  /menus/products/batch_get:
+    post:
+      description: Get products from different menus
+      tags:
+      - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - menu_ids
+              type: object
+              properties:
+                menu_ids:
+                  description: ids of the menus that we are fetching products from
+                  type: array
+                  items:
+                    type: integer
+                  example:
+                  - 322
+                  - 323
+                product_ids:
+                  description: ids of the products that we want fetch
+                  type: array
+                  items:
+                    type: integer
+                  example:
+                  - 37878
+                  - 37879
+                stock_status:
+                  description: whether the products we want to fetch are in stock or not
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+      responses:
+        '200':
+          description: Returns a list of producs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: ok
+                  data:
+                    type: object
+                    properties:
+                      order_id:
+                        type: string
+                        example: ROYALOAK-123456

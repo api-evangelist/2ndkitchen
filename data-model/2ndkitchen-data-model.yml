@@ -1,0 +1,61 @@
+generated: '2026-07-17'
+method: derived
+source: >-
+  Derived from the schema $ref links and id-reference fields (business_id,
+  user_id, restaurant_id, menu_id, delivery_id, category_id, coupon_id, ...) in
+  the nine OpenAPI definitions under openapi/*.yaml, captured from the legacy
+  2ndKitchen Swagger UI at docs.2ndkitchen.com. Captures the core
+  entity-relationship graph behind the food-ordering / ghost-kitchen domain that
+  spanned the authentication, business, user, restaurant, order, pricing,
+  payment, delivery, and indexing microservices.
+docs: https://docs.2ndkitchen.com/
+notation: >-
+  relationships use has_one / has_many / belongs_to with the foreign-key field
+  name; direction is from the entity that owns the reference. Fields are the
+  literal property names in the OpenAPI schemas.
+
+entities:
+  - {name: Business, id_field: id, domain: business, description: A venue (bar, hotel, brewery, apartment community) that offers food without an on-site kitchen.}
+  - {name: BusinessMenu, id_field: id, domain: business, description: A menu attached to a business, sourced from a partner restaurant.}
+  - {name: Kiosk, id_field: external_id, domain: business, description: A physical ordering kiosk located at a business.}
+  - {name: User, id_field: id, domain: user, description: An end user / diner, optionally tied to a business and business location.}
+  - {name: UserNotification, id_field: id, domain: user, description: A notification record belonging to a user.}
+  - {name: Restaurant, id_field: id, domain: restaurant, description: A partner restaurant that fulfills menus and products.}
+  - {name: Brand, id_field: id, domain: restaurant, description: A restaurant brand.}
+  - {name: Product, id_field: id, domain: restaurant, description: A menu product/item sold by a restaurant.}
+  - {name: ProductCategory, id_field: id, domain: restaurant, description: A category grouping products.}
+  - {name: ProductLabel, id_field: id, domain: restaurant, description: A label (e.g. dietary tag) applied to products.}
+  - {name: OpeningHoursException, id_field: id, domain: restaurant, description: A dated exception to a restaurant's normal opening hours.}
+  - {name: Order, id_field: order_id, domain: order, description: A customer order spanning one or more sub-orders.}
+  - {name: SubOrder, id_field: id, domain: order, description: The portion of an order fulfilled by a single restaurant/delivery.}
+  - {name: OrderCartItem, id_field: id, domain: order, description: A line item in an order's cart.}
+  - {name: UserPaymentMethod, id_field: id, domain: payment, description: A stored payment instrument for a user.}
+  - {name: Coupon, id_field: coupon_id, domain: pricing, description: A discount coupon applied during pricing calculation.}
+  - {name: Delivery, id_field: delivery_id, domain: delivery, description: A delivery job that fulfills a sub-order.}
+  - {name: RestaurantRecommendation, id_field: null, domain: indexing, description: A ranked restaurant recommendation for a set of coordinates.}
+
+relationships:
+  - {from: Business, to: BusinessMenu, kind: has_many, via: menus}
+  - {from: Business, to: Kiosk, kind: has_many, via: kiosks}
+  - {from: Business, to: User, kind: has_many, via: business_id}
+  - {from: BusinessMenu, to: Restaurant, kind: belongs_to, via: restaurant_id}
+  - {from: BusinessMenu, to: BusinessMenuProduct, kind: has_many, via: products}
+  - {from: Kiosk, to: Business, kind: belongs_to, via: business_id}
+  - {from: User, to: UserNotification, kind: has_many, via: notifications}
+  - {from: User, to: Business, kind: belongs_to, via: business_id}
+  - {from: UserNotification, to: User, kind: belongs_to, via: user_id}
+  - {from: Restaurant, to: OpeningHoursException, kind: has_many, via: opening_hours_exceptions}
+  - {from: Restaurant, to: Delivery, kind: has_one, via: delivery_id}
+  - {from: OpeningHoursException, to: Restaurant, kind: belongs_to, via: restaurant_id}
+  - {from: Product, to: ProductCategory, kind: belongs_to, via: category_id}
+  - {from: Product, to: ProductLabel, kind: has_many, via: labels}
+  - {from: Order, to: User, kind: belongs_to, via: user_id}
+  - {from: Order, to: Business, kind: belongs_to, via: business_id}
+  - {from: Order, to: SubOrder, kind: has_many, via: sub_orders}
+  - {from: SubOrder, to: Restaurant, kind: belongs_to, via: rest_id}
+  - {from: SubOrder, to: Delivery, kind: belongs_to, via: delivery_id}
+  - {from: SubOrder, to: Product, kind: has_many, via: products}
+  - {from: OrderCartItem, to: BusinessMenu, kind: belongs_to, via: menu_id}
+  - {from: OrderPricing, to: Coupon, kind: belongs_to, via: coupon_id}
+  - {from: UserPaymentMethod, to: User, kind: belongs_to, via: user_id}
+  - {from: RestaurantRecommendation, to: Restaurant, kind: has_one, via: restaurant}

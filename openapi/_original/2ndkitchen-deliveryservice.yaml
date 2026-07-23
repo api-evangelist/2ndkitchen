@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  title: 2ndKitchen - Delivery Service
+  version: '1.0'
+servers:
+  - url: https://delivery-staging.2ndkitchen.com
+    description: staging
+paths:
+  /deliveries/{delivery_id}/job:
+    parameters:
+      - in: path
+        required: true
+        name: delivery_id
+        description: The id for the delivery
+        example: 146136
+        schema:
+          type: integer
+    get:
+      description: Get the pickup and dropoff ETA for a delivery job
+      tags:
+        - Deliveries
+      responses:
+        '200':
+          description: Returns the pickup and dropoff ETA for a delivery job.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: 'ok'
+                  data:
+                    type: object
+                    properties:
+                      pickup_eta:
+                        type: string
+                        description: ETA for the pickup date for the delivery
+                        example: '2022-01-31 13:11:24.043718'
+                      dropoff_eta:
+                        type: string
+                        description: ETA for the dropoff date for the delivery
+                        example: '2022-01-31 13:22:12.926828'

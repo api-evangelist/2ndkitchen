@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  title: 2ndKitchen - Service Authentication Brand API
+  version: '1.0'
+servers:
+- url: https://auth-staging.2ndkitchen.com
+  description: staging
+tags:
+- name: Brand
+paths:
+  /brands:
+    parameters:
+    - in: query
+      required: true
+      name: brand_ids
+      description: Ids for the brands we want
+      example:
+      - 1
+      - 2
+      schema:
+        type: array
+        items:
+          type: integer
+    get:
+      description: Get a list of brands for a given restaurant menu
+      tags:
+      - Brand
+      responses:
+        '200':
+          description: Returns the brands we wanted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: ok
+                  data:
+                    type: object
+                    properties:
+                      products:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Brand'
+components:
+  schemas:
+    Brand:
+      type: object
+      properties:
+        external_id:
+          type: integer
+        name:
+          type: string
+        id:
+          type: integer
+        is_deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
+        description:
+          type: string
+        img:
+          type: string
+        created_date:
+          type: string

@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  title: 2ndKitchen - Pricing Service 
+  version: '1.0'
+servers:
+  - url: https://pricing-staging.2ndkitchen.com
+    description: staging
+paths:
+  /coupons/calc:
+    post:
+      description: Calculates coupon discount
+      tags:
+        - Coupons
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - data
+              type: object
+              properties:
+                id:
+                  deprecated: true
+                  description: 'Coupon id'
+                  type: integer
+                code:
+                  description: 'Coupon code'
+                  type: string
+                data:
+                  required:
+                    - business_id
+                    - price
+                  description: 'Coupon use information'
+                  type: object
+                  properties:
+                    business_id:
+                      description: 'Associated business id'
+                      type: integer
+                    price:
+                      description: 'order price'
+                      type: number
+                    delivery_slot:
+                      description: 'Order delivery time'
+                      type: string
+                      format: date-time
+                      example: '2021-10-14 22:38:30.266962'
+      responses:
+        '200':
+          description: Returns the discount amount and other coupon data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: 'ok'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        description: 'Coupon id'
+                        type: integer
+                      code:
+                        description: 'Coupon code'
+                        type: string
+                      coupon_type:
+                        type: integer
+                        enum: [0, 1, 2, 3, 4, 5, 6]
+                        description: >
+                          Coupon Type:
+                           * `0` - DEFAULT
+                           * `1` - CREDIT
+                           * `2` - VOUCHER
+                           * `3` - REFERRAL
+                           * `4` - LOYALTY
+                           * `5` - FIRST_TIME
+                           * `6` - STAFF
+                      discount:
+                        description: 'Discount amount'
+                        type: number
+                      token:
+                        description: 'Coupon Token (for $0 vouchers)'
+                        type: string
+                      type:
+                        type: number
+                        enum: [0,1]
+                        description: >
+                          Discount Type:
+                           * `0` - FIXED
+                           * `1` - PERCENT

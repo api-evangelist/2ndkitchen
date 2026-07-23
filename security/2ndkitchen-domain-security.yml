@@ -1,0 +1,23 @@
+generated: '2026-07-17'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: 2ndkitchen.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 26 11:57:42 2026 GMT
+  hsts: false
+- host: docs.2ndkitchen.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Feb  6 23:59:59 2027 GMT
+  hsts: false
+- host: auth-staging.2ndkitchen.com
+  https: false
+domains:
+- domain: 2ndkitchen.com
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: true
+  dmarc_policy: reject

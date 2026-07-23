@@ -1,0 +1,216 @@
+openapi: 3.0.0
+info:
+  title: 2ndKitchen - Authentication Service 
+  version: '1.0'
+servers:
+  - url: https://auth-staging.2ndkitchen.com
+    description: staging
+paths:
+  /authenticate/phone_number:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - phone_number
+                - business_id
+              type: object
+              properties:
+                business_id:
+                  description: 'Id for business'
+                  type: integer
+                phone_number:
+                  description: 'User phone number'
+                  type: string
+      description: Authenticate a user via phone number
+      tags:
+        - Authentication
+      responses:
+        '200':
+          description: Returns the access token and the refresh token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: 
+                    type: string
+                    example: 'ok'
+                  data:
+                    type: object
+                    properties:
+                      access_token: 
+                        description: 'User access token'
+                        type: string
+                        example: 'ffc4ff'
+                      refresh_token:
+                        description: 'User refresh token'
+                        type: string
+                        example: 'kt6kht'
+  /authenticate/google:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - code
+                - business_id
+              type: object
+              properties:
+                business_id:
+                  description: 'Business id'
+                  type: integer
+                code:
+                  description: 'Google auth code'
+                  type: string
+                redirect_uri:
+                  description: 'Redirect uri'
+                  type: string
+      description: Authenticate a user via google
+      tags:
+        - Authentication
+      responses:
+        '200':
+          description: Returns the access token and the refresh token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: 
+                    type: string
+                    example: 'ok'
+                  data:
+                    type: object
+                    properties:
+                      access_token: 
+                        description: 'User access token'
+                        type: string
+                        example: 'ffc4ff'
+                      refresh_token:
+                        description: 'User refresh token'
+                        type: string
+                        example: 'kt6kht'
+              
+  /authenticate/facebook:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - code
+                - business_id
+              type: object
+              properties:
+                business_id:
+                  description: 'Business id'
+                  type: integer
+                code:
+                  description: 'Facebook auth code'
+                  type: string
+      description: Authenticate a user via facebook
+      tags:
+        - Authentication
+      responses:
+        '200':
+          description: Returns the access token and the refresh token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: 
+                    type: string
+                    example: 'ok'
+                  data:
+                    type: object
+                    properties:
+                      access_token: 
+                        description: 'User access token'
+                        type: string
+                        example: 'ffc4ff'
+                      refresh_token:
+                        description: 'User refresh token'
+                        type: string
+                        example: 'kt6kht'
+  /authenticate/phone_number/v2:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - phone_number
+                - verification_code
+                - business_id
+              type: object
+              properties:
+                business_id:
+                  description: 'Id for business'
+                  type: integer
+                verification_code:
+                  description: 'SMS Verification code'
+                  type: string
+                phone_number:
+                  description: 'User phone number'
+                  type: string
+      description: Authenticate a user via phone number
+      tags:
+        - Authentication
+      responses:
+        '200':
+          description: Returns the access token and the refresh token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: 
+                    type: string
+                    example: 'ok'
+                  data:
+                    type: object
+                    properties:
+                      access_token: 
+                        description: 'User access token'
+                        type: string
+                        example: 'ffc4ff'
+                      refresh_token:
+                        description: 'User refresh token'
+                        type: string
+                        example: 'kt6kht'
+  /verifications/phone_number:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - phone_number
+              type: object
+              properties:
+                phone_number:
+                  description: 'Phone number to verify'
+                  type: string
+      description: Authenticate a user via phone number
+      tags:
+        - Authentication
+      responses:
+        '200':
+          description: Sends a temporary verification token to the provided phone number
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: 
+                    type: string
+                    example: 'ok'

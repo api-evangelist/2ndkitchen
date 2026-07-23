@@ -1,0 +1,232 @@
+openapi: 3.0.0
+info:
+  title: 2ndKitchen - Service Authentication Restaurant API
+  version: '1.0'
+servers:
+- url: https://auth-staging.2ndkitchen.com
+  description: staging
+tags:
+- name: Restaurant
+paths:
+  /restaurants:
+    parameters:
+    - in: query
+      required: true
+      name: ids
+      description: Restaurant ids
+      example: 205,206
+      schema:
+        type: integer
+    get:
+      description: Get a list of restaurants by id
+      tags:
+      - Restaurant
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  restaurants:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Restaurant'
+components:
+  schemas:
+    OpeningHoursException:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ''
+        restaurant_id:
+          type: integer
+          description: ''
+        start_date:
+          type: string
+          description: ''
+        end_date:
+          type: string
+          description: ''
+        open_time:
+          type: string
+          description: ''
+        close_time:
+          type: string
+          description: ''
+        is_open:
+          type: boolean
+          description: ''
+          enum:
+          - 0
+          - 1
+        title:
+          type: string
+          description: ''
+        created_date:
+          type: string
+          description: ''
+    Restaurant:
+      type: object
+      properties:
+        address:
+          type: string
+          description: ''
+        admin_user_id:
+          type: integer
+          description: ''
+        city:
+          type: string
+          description: ''
+        commission:
+          type: number
+          description: ''
+        country:
+          type: string
+          description: ''
+        courier_pickup_instructions:
+          type: string
+          description: ''
+        currency_code:
+          type: string
+          description: ''
+        delivery_code:
+          type: string
+          description: ''
+        delivery_id:
+          type: integer
+          description: ''
+        email:
+          type: string
+          description: ''
+        external_establishment_id:
+          type: integer
+          description: ''
+        external_establishment_name:
+          type: string
+          description: ''
+        external_location_id:
+          type: string
+          description: ''
+        has_printer:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        id:
+          type: integer
+          description: ''
+        integrations:
+          type: string
+          description: ''
+        is_deleted:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        latitude:
+          type: string
+          description: ''
+        launched_date:
+          type: string
+          description: ''
+        logo:
+          type: string
+          description: ''
+        longitude:
+          type: string
+          description: ''
+        name:
+          type: string
+          description: ''
+        notes:
+          type: string
+          description: ''
+        password:
+          type: string
+          description: ''
+        phone_number:
+          type: string
+          description: ''
+        printer_ip:
+          type: string
+          description: ''
+        printer_port:
+          type: string
+          description: ''
+        slug:
+          type: string
+          description: ''
+        state:
+          type: string
+          description: ''
+        status:
+          type: integer
+          enum:
+          - 1
+          - 2
+          description: "Status:\n * `0` - Active\n * `1` - Archived\n"
+        stock_status:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        stock_status_override:
+          type: boolean
+          description: ''
+        supports_popup:
+          type: boolean
+          description: ''
+        sync_catalog:
+          type: integer
+          description: ''
+        timezone:
+          type: string
+          description: ''
+        timezone_offset:
+          type: string
+          description: ''
+        user_name:
+          type: string
+          description: ''
+        w9_uploaded:
+          type: integer
+          description: ''
+        zip:
+          type: string
+          description: ''
+        opening_hours:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpeningHoursObj'
+        opening_hours_exceptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpeningHoursException'
+    OpeningHoursObj:
+      type: object
+      properties:
+        close_time:
+          type: string
+          description: Close time (utc)
+          example: 1200
+        open_time:
+          type: string
+          description: Open time (utc)
+          example: 600
+        day_of_the_week:
+          type: integer
+          description: Days of the weeks starting Monday (0)
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6

@@ -1,0 +1,490 @@
+openapi: 3.0.0
+info:
+  title: 2ndKitchen - Service Authentication Business API
+  version: '1.0'
+servers:
+- url: https://auth-staging.2ndkitchen.com
+  description: staging
+tags:
+- name: Business
+paths:
+  /businesses/{business_id}:
+    parameters:
+    - in: path
+      required: true
+      name: business_id
+      description: The id for the business
+      example: 988
+      schema:
+        type: integer
+    - in: query
+      name: include
+      description: Query string for objects on the business to include - menu, delivery_modes, etc.
+      schema:
+        type: string
+        enum:
+        - menus
+        - tip_options
+        - opening_hours
+        - delivery_modes
+    get:
+      security:
+      - bearerAuth: []
+      description: Get a business
+      tags:
+      - Business
+      responses:
+        '200':
+          description: Returns a Business object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  business:
+                    $ref: '#/components/schemas/Business'
+components:
+  schemas:
+    PaymentMethod:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ''
+        type:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          description: "Payment Method:\n * `1` - CC\n * `2` - APPLE\n * `3` - GPAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
+    Business:
+      type: object
+      properties:
+        address:
+          type: string
+          description: ''
+        admin_user_id:
+          type: integer
+          description: ''
+        allow_asap:
+          type: boolean
+          description: ''
+        city:
+          type: string
+          description: City
+        commission:
+          type: number
+          description: ''
+        commission_threshold:
+          type: number
+          description: ''
+        country:
+          type: string
+          description: ''
+        currency_code:
+          type: string
+          description: ''
+        customer_pickup_area_instructions:
+          type: string
+          description: ''
+        delivery_mode:
+          type: integer
+          description: ''
+        dropoff_instructions:
+          type: string
+          description: ''
+        email:
+          type: string
+          description: ''
+        external_establishment_id:
+          type: integer
+          description: ''
+        external_establishment_name:
+          type: string
+          description: ''
+        external_location_id:
+          type: integer
+          description: ''
+        hub_location_id:
+          type: integer
+          description: ''
+        id:
+          type: integer
+          description: ''
+        img:
+          type: string
+          description: ''
+        is_active:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        is_deleted:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        latitude:
+          type: string
+          description: ''
+        launch_date:
+          type: string
+          description: ''
+        logo:
+          type: string
+          description: ''
+        longitude:
+          type: string
+          description: ''
+        main_url:
+          type: string
+          description: ''
+        markup_rules:
+          type: string
+          description: ''
+        min_order_amount:
+          type: number
+          description: ''
+        name:
+          type: string
+          description: ''
+        notes:
+          type: string
+          description: ''
+        notification_interval:
+          type: string
+          description: ''
+        opening_hours:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpeningHoursObj'
+        kiosks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Kiosk'
+        phone_number:
+          type: string
+          description: ''
+        pickup_area_instructions:
+          type: string
+          description: ''
+        review_link:
+          type: string
+          description: ''
+        service_fee:
+          type: number
+          description: ''
+        slug:
+          type: string
+          description: ''
+        state:
+          type: string
+          description: ''
+        stock_status:
+          type: integer
+          description: ''
+        tax:
+          type: number
+          description: ''
+        timezone:
+          type: string
+          description: ''
+        timezone_offset:
+          type: string
+          description: ''
+        tip_commission:
+          type: number
+          description: ''
+        tookan_team_id:
+          type: integer
+          description: ''
+        type:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          description: "Menu Type:\n * `0` - BAR\n * `1` - HOTEL\n * `2` - RESIDENTIAL\n * `3` - COWORKING_SPACE\n * `4` - AIRPORT\n * `5` - MSA\n"
+        unit_count:
+          type: integer
+          description: ''
+        w9_uploaded:
+          type: boolean
+          description: ''
+        zip:
+          type: string
+          description: ''
+        menus:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessMenu'
+        delivery_modes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryMode'
+        tip_options:
+          type: array
+          items:
+            $ref: '#/components/schemas/TipOption'
+    BusinessMenuProductCategory:
+      type: object
+      properties:
+        category_id:
+          type: integer
+          description: category id
+        name:
+          type: string
+          description: category name
+        position:
+          type: integer
+          description: category order position
+    DeliveryMode:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ''
+        delivery_mode:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          description: "Menu Type:\n * `0` - DIRECT_TO_LOCATION\n * `1` - YAY_FOOD_POLE\n * `2` - PICKUP_AREA\n * `3` - DIRECT_TO_CUSTOMER\n * `4` - LAST_YARD_DELIVERY\n"
+        is_default:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+    BusinessMenuProduct:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: product id
+        category_id:
+          type: integer
+          description: category id
+        name:
+          type: string
+          description: product name
+          example: The BBQ Sandwich
+        position:
+          type: integer
+          description: product order position
+        price:
+          type: number
+          description: product price
+          format: float
+    BusinessMenu:
+      type: object
+      properties:
+        courier_id:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          description: "Courier Type:\n * `0` - WALKING\n * `1` - TWIN_JET\n * `2` - EATING_IN\n * `4` - TOOKAN\n * `5` - POSTMATES\n * `6` - DOORDASH\n * `7` - SKIPCART\n * `8` - REEF\n * `9` - RELAY\n"
+        delivery_fee:
+          type: number
+          description: ''
+        delivery_mode:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          description: "Menu Type:\n * `0` - DIRECT_TO_LOCATION\n * `1` - YAY_FOOD_POLE\n * `2` - PICKUP_AREA\n * `3` - DIRECT_TO_CUSTOMER\n * `4` - LAST_YARD_DELIVERY\n"
+        delivery_range:
+          type: string
+          description: ''
+        event_id:
+          type: integer
+          description: ''
+        id:
+          type: integer
+          description: ''
+        is_backup:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        is_late_night:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        min_order_amount:
+          type: number
+          description: ''
+        name:
+          type: string
+          description: ''
+        pre_order_allowed:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        restaurant_commission:
+          type: number
+          description: ''
+        restaurant_id:
+          type: integer
+          description: ''
+        stock_status:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        stock_status_override:
+          type: boolean
+          description: ''
+        theme_id:
+          type: integer
+          description: ''
+        type:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          description: "Menu Type:\n * `0` - DEFAULT\n * `1` - EVENT\n * `2` - EMBEDDED\n * `3` - DONATION\n * `4` - ECOMMERCE\n * `5` - PRE_PACKAGED\n"
+        opening_hours:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpeningHoursObj'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessMenuProduct'
+        products_categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessMenuProductCategory'
+        payment_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentMethod'
+        delivery_modes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryMode'
+    Kiosk:
+      type: object
+      properties:
+        business_id:
+          type: integer
+          description: ''
+        name:
+          type: string
+          description: ''
+        last_seen:
+          type: string
+          description: ''
+        battery_status:
+          type: integer
+          description: ''
+        is_battery_charging:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        is_locked:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        external_id:
+          type: integer
+          description: ''
+        external_name:
+          type: string
+          description: ''
+        make:
+          type: string
+          description: ''
+        os_version:
+          type: string
+          description: ''
+        last_seen_external:
+          type: string
+          description: ''
+        is_active:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        payment_mode:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          description: "Payment Method:\n * `1` - CREDIT_CARD\n * `2` - APPLE_PAY\n * `3` - GOOGLE_PAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
+        is_default:
+          type: boolean
+          description: ''
+    TipOption:
+      type: object
+      properties:
+        value:
+          type: number
+          description: tip value
+        is_default:
+          type: integer
+          description: is default tip option
+          enum:
+          - 0
+          - 1
+    OpeningHoursObj:
+      type: object
+      properties:
+        close_time:
+          type: string
+          description: Close time
+          example: 1200
+        open_time:
+          type: string
+          description: Open time
+          example: 600
+        day_of_the_week:
+          type: integer
+          description: Days of the weeks starting Monday (0)
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6

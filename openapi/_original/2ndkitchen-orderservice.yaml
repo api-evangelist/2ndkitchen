@@ -1,0 +1,629 @@
+openapi: 3.0.0
+info:
+  title: 2ndkitchen - Order Service
+  version: '1.0'
+servers:
+  - url: https://orders-staging.2ndkitchen.com
+    description: staging
+paths:
+  /orders/create:
+    post:
+      description: Places a new order in the system
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - business
+                - pricing
+                - transaction
+                - user
+                - cart
+              type: object
+              properties:
+                business:
+                  $ref: '#/components/schemas/OrderBusiness'
+                pricing:
+                   $ref: '#/components/schemas/OrderPricing'
+                transaction:
+                   $ref: '#/components/schemas/OrderTransaction'
+                user:
+                   $ref: '#/components/schemas/OrderUser'
+                cart:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/OrderCartItem'
+                scheduled_date:
+                  description: Date for the order if its a preorder
+                  type: string
+                  example: '2021-10-14 22:38:30.266962'
+                  format: date-time
+      responses:
+        '200':
+          description: Returns the order id of the newly created order.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: 'ok'
+                  data:
+                    type: object
+                    properties:
+                      order_id:
+                        type: string
+                        example: 'ROYALOAK-123456'
+  /orders/{order_id}/status/{status}:
+    parameters:
+      - in: path
+        required: true
+        name: order_id
+        description: The id for the order
+        example: 'ROYALOAK-123456'
+        schema:
+          type: string
+      - in: path
+        required: true
+        name: status
+        schema:
+          type: number
+          enum: [0, 1, 2, 3, 4, 5]
+        description: >
+            Order Status:
+             * `0` - NEW
+             * `1` - PROCESSING
+             * `2` - COMPLETED
+             * `3` - PARTIAL
+             * `4` - CANCELLED
+             * `5` - RECEIVED
+    put:
+      description: Updates the status of an order
+      tags:
+        - Orders
+      responses:
+        '200':
+          description: Success if order status ws updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: 'ok'
+                  data:
+                    type: boolean
+                    example: true
+  /order/{external_id}:
+    parameters:
+      - in: path
+        required: true
+        name: external_id
+        description: The id for the order - same as order id
+        example: 'ROYALOAK-123456'
+        schema:
+          type: string
+    get:
+      description: Get an Order that was made in the system
+      tags:
+        - Orders
+      responses:
+        '200':
+          description: Success if the order was retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Order'
+
+components:
+  schemas:
+    OrderBusiness:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          description: id for business
+          type: integer
+          example: 8
+        delivery_mode:
+          type: integer
+          enum: [0, 1, 2, 3, 4, 5]
+          description: >
+            Menu Type:
+             * `0` - DIRECT_TO_LOCATION
+             * `1` - YAY_FOOD_POLE
+             * `2` - PICKUP_AREA
+             * `3` - DIRECT_TO_CUSTOMER
+             * `4` - LAST_YARD_DELIVERY
+        menu_type:
+          type: integer
+          enum: [0, 1, 2, 3, 4, 5]
+          description: >
+            Menu Type:
+             * `0` - DEFAULT
+             * `1` - EVENT
+             * `2` - EMBEDDED
+             * `3` - DONATION
+             * `4` - ECOMMERCE
+             * `5` - PRE_PACKAGED
+    OrderPricing:
+      required:
+        - full_price
+        - customer_price
+        - tip
+      type: object
+      properties:
+        full_price:
+          description: Price of the order
+          type: number
+          format: float
+          example: 5.5
+        customer_price:
+          description: Price paid by customer
+          type: number
+          format: float
+          example: 3.2
+        tip:
+          description: Tip for the order
+          type: number
+          format: float
+          example: 1.1
+        delivery_fee:
+          description: Fee for delivery
+          type: number
+          format: float
+        coupon_id:
+          description: Id of the coupon used
+          type: number
+          example: 12345
+        coupon_type:
+          type: integer
+          enum: [0, 1, 2, 3, 4, 5, 6]
+          description: >
+            Coupon Type:
+             * `0` - DEFAULT
+             * `1` - CREDIT
+             * `2` - VOUCHER
+             * `3` - REFERRAL
+             * `4` - LOYALTY
+             * `5` - FIRST_TIME
+             * `6` - STAFF
+    OrderTransaction:
+      required:
+        - payment_method
+      type: object
+      properties:
+        token:
+          description: Square payment token
+          type: string
+        idempotency_key:
+          description: Square idempotency key
+          type: string
+        payment_method:
+          type: integer
+          enum: [1, 2, 3, 4, 5, 6]
+          description: >
+            Payment Method:
+             * `1` - CC
+             * `2` - APPLE
+             * `3` - GPAY
+             * `4` - CASH
+             * `5` - BUSINESS_BILLING
+             * `6` - DIRECT_TO_BILL
+        wallet_type:
+          deprecated: true
+          description: Wallet type used
+          type: number
+    OrderUser:
+      required:
+        - name
+        - phone
+      type: object
+      properties:
+        name:
+          description: 'Customer name'
+          type: string
+          example: 'John Doe'
+        email:
+          description: 'Customer email'
+          type: string
+          example: 'johndoe@gmail.com'
+        phone:
+          description: 'Customer phone number'
+          type: string
+          example: '+13211231223'
+        location:
+          deprecated: true
+          description: 'Customer location (table number, room number)'
+          type: string
+        user_id:
+          description: 'Authenticatd user id'
+          type: integer
+          example: 12345
+        address:
+          description: 'Customer street name and number'
+          type: string
+          example: "380 Webster Ave"
+        address_line_2:
+          description: 'Customer Apt number'
+          type: string
+          example: "2A"
+        zip:
+          description: 'Customer Postal code'
+          type: string
+          example: "12345"
+        city:
+          description: 'Customer City'
+          type: string
+          example: "New York"
+        country:
+          description: 'Customer country'
+          type: string
+          example: 'US'
+        state:
+          description: 'Customer State'
+          type: string
+          example: "New York"
+    OrderCartItem:
+      required:
+        - id
+        - quantity
+        - menu_id
+      description: 'Cart item product information'
+      type: object
+      properties:
+        id:
+          description: 'Product id'
+          type: integer
+          example: 12345
+        quantity:
+          description: 'Product quantity'
+          type: integer
+          example: 1
+        menu_id:
+          description: 'Associated menu id'
+          type: integer
+        event_id:
+          deprecated: true
+          description: 'Associated event id'
+          type: integer
+        comments:
+          description: 'Customer product comments'
+          type: string
+          example: 'Not spicy please'
+        delivery_slot:
+          deprecated: true
+          description: 'user selected pre defined delivery time'
+          type: string
+        metas:
+          description: Metadata for products
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderCartItemMeta'
+    OrderCartItemMeta:
+      required:
+        - id
+        - name
+        - values
+      description: 'Product metadata'
+      type: object
+      properties:
+        id:
+          description: 'Product metadata id'
+          type: number
+        name:
+          description: 'Product metadata name'
+          type: string
+          example: 'Add Dipping Sauce'
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderCartItemMetaValue'
+    OrderCartItemMetaValue:
+      required:
+        - id
+        - name
+        - price
+      type: object
+      properties:
+        id:
+          description: 'Product metadata value id'
+          type: number
+        name:
+          description: 'Product metadata value name'
+          type: string
+          example: 'Blue Cheese Dressing'
+        price:
+          description: 'Product metadata value price'
+          type: number
+          format: float
+          example: '2.2'
+    Order:
+      type: object
+      properties:
+        admin_user_id:
+          type: integer
+          description: 'Admin user id for order'
+        business_id:
+          type: integer
+          description: 'Business id'
+        business_slug:
+          type: string
+          description: 'business slug'
+        cancelled:
+          type: integer
+          description: 'order is cancelled'
+          enum: [0,1]
+        coupon_used:
+          type: integer
+          description: 'was coupon used'
+          enum: [0,1]
+        currency_code:
+          description: 'Code of the currency used'
+          type: string
+        created_time:
+          type: string
+          description: 'Time order was created'
+          format: "YY-DD-MMTHH:MM:SS.MS"
+        delivery_fee:
+          type: number
+          description: 'Delivery fee for order'
+          format: float
+        delivery_mode:
+          type: integer
+          enum: [0, 1, 2, 3, 4]
+          description: >
+            Delivery Mode:
+             * `0` - Direct to Location
+             * `1` - Yay Food Pole
+             * `2` - Pickup Area
+             * `3` - Direct to Customer
+             * `4` - Last Yard
+        email:
+          type: string
+          description: 'User email'
+        guest_checkout:
+          type: integer
+          enum: [0, 1]
+          description: 'Whether the order is guest checkout'
+        issuer_id:
+          type: integer
+          description: 'order issuer id'
+        menu_type:
+          type: integer
+          enum: [0, 1, 2, 3]
+          description: >
+            Menu Type:
+             * `0` - Default
+             * `1` - Event
+             * `2` - Embedded
+             * `3` - Donation
+             * `4` - Ecommerce
+             * `5` - Pre-Packaged
+        needs_supervisor:
+          type: integer
+          description: 'Whether order needs supervisor or not'
+          enum: [0,1]
+        order_id:
+          type: string
+          description: 'Id for the order'
+        order_method:
+          type: integer
+          enum: [0, 1]
+          description: >
+            Order Method:
+             * `0` - APP
+             * `1` - KIOSK
+        paid_amount:
+          type: number
+          description: 'Amount paid'
+        payment_method:
+          type: integer
+          enum: [1, 2, 3, 4, 5, 6]
+          description: >
+            Menu Type:
+             * `1` - CC
+             * `2` - APPLE
+             * `3` - GPAY
+             * `4` - CASH
+             * `5` - BUSINESS_BILLING
+             * `6` - DIRECT_TO_BILL
+        price:
+          type: number
+          description: 'Order price'
+          format: float
+        rel_order_id:
+          type: string
+          description: 'Id of original order if this order is a duplicate'
+        scheduled_date:
+          type: string
+          description: 'Date scheduled for preorders'
+        score:
+          type: integer
+          description: 'Customer rating for the order'
+        suppress_msgs:
+          type: integer
+          enum: [0, 1]
+          description: 'Whether or not the customer wants texts'
+        survey_sent:
+          type: integer
+          enum: [0, 1]
+          description: 'Whether survey was sent for order or not'
+        table:
+          type: number
+          description: 'Table number for order'
+        tip:
+          type: number
+          description: 'Order tip amount'
+        user_addr:
+          type: string
+          description: 'User address line 1'
+        user_addr_line_2:
+          type: string
+          description: 'User address line 2'
+        user_city:
+          type: string
+          description: 'User city'
+        user_country:
+          description: 'User country'
+          type: string
+        user_id:
+          type: integer
+          description: 'User id'
+        user_name:
+          type: string
+          description: 'User name'
+        user_phone:
+          type: string
+          description: 'User phone'
+        user_zip:
+          type: string
+          description: 'User zip'
+        sub_orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubOrder'
+
+    SubOrder:
+      type: object
+      properties:
+        accept_time:
+          type: string
+          description: 'Time order was accepted'
+        acknowledged_time:
+          type: string
+          description: 'Time order was acknowledged'
+        completed_time:
+          type: string
+          description: 'Time order was complete'
+        courier_id:
+          type: integer
+          enum: [0, 1, 2, 3, 4]
+          description: >
+            Courier Type:
+             * `0` - WALKING
+             * `1` - TWIN_JET
+             * `2` - EATING_IN
+             * `4` - TOOKAN
+             * `5` - POSTMATES
+             * `6` - DOORDASH
+             * `7` - SKIPCART
+             * `8` - REEF
+             * `9` - RELAY
+        delivered_time:
+          type: string
+          description: 'Time order was delivered'
+        delivery_id:
+          type: integer
+          description: 'same as courier id'
+        delivery_job_id:
+          type: integer
+          description: 'Delivery job id'
+        delivery_slot:
+          type: string
+          description: 'Suborder delivery slot'
+        event_id:
+          type: integer
+          description: 'Id for event if the order belongs to one'
+        id:
+          type: string
+          description: 'Suborder id'
+        pickup_time:
+          type: string
+          description: 'Time order was picked up'
+        received_time:
+          type: string
+          description: 'Time order was received'
+        rest_id:
+          type: integer
+          description: 'Restaurant id'
+        rest_name:
+          type: string
+          description: 'Restaurant name'
+        rest_slug:
+          type: string
+          description: 'Restaurant slug'
+        status:
+          type: integer
+          enum: [0, 1, 2, 3, 4, 5]
+          description: >
+            Menu Type:
+             * `0` - NEW
+             * `1` - PROCESSING
+             * `2` - COMPLETED
+             * `3` - PARTIAL
+             * `4` - CANCELLED
+             * `5` - RECEIVED
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+    Product:
+      type: object
+      properties:
+        comments:
+          type: string
+          description: 'Comments for the product'
+        contains_alcohol:
+          type: integer
+          enum: [0, 1]
+          description: 'Whether alcohol contains alcohol or not'
+        event_id:
+          type: integer
+          description: 'Id for event if product is in event'
+        id:
+          type: integer
+          description: 'Id for product'
+        menu_id:
+          type: integer
+          description: 'Menu id'
+        name:
+          type: string
+          description: 'Product name'
+        product_id:
+          type: string
+          description: 'Product id'
+        quantity:
+          type: integer
+          description: 'Quantity of items'
+        subtotal:
+          type: number
+          description: 'Total price of product'
+        rest_id:
+          type: integer
+          description: 'Restaurant id'
+        rest_name:
+          type: string
+          description: 'Restaurant name'
+        meta:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductMeta'
+    ProductMeta:
+      type: object
+      properties:
+        key:
+          type: integer
+          description: 'Meta key '
+        label:
+          type: string
+          description: 'Label for product'
+        meta_id:
+          type: integer
+          description: 'Id for meta'
+        meta_val_id:
+          type: integer
+          description: 'Id for Meta value'
+        price:
+          type: number
+          description: 'Price of product meta'
+        value:
+          type: number
+          description: 'Value of product meta'

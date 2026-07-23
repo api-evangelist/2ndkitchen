@@ -1,0 +1,188 @@
+openapi: 3.0.0
+info:
+  title: 2ndKitchen - Service Authentication Restaurants API
+  version: '1.0'
+servers:
+- url: https://auth-staging.2ndkitchen.com
+  description: staging
+tags:
+- name: Restaurants
+paths:
+  /recommend/restaurants:
+    parameters:
+    - in: query
+      name: include
+      description: Query string for the longitude, latitude, distance from the user in miles, and order by filter to get.
+      schema:
+        type: string
+        enum:
+        - longitude
+        - latitude
+        - distance
+        - limit
+        - order_by
+    post:
+      description: Get recommended restaurants based on distance
+      tags:
+      - Restaurants
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - latitude
+              - longitude
+              properties:
+                longitude:
+                  description: Longitude coordinate of the users location
+                  type: integer
+                latitude:
+                  description: Latitude coordinate of the users location
+                  type: integer
+                distance:
+                  description: Distance in miles from user
+                  type: integer
+                  default: 2
+                limit:
+                  description: Limit to the number of restaurants to get
+                  type: integer
+                  default: 10
+                order_by:
+                  description: order by value (defaults to "distance")
+                  type: string
+                  default: distance
+                offset:
+                  description: Offsets the results by a number
+                  type: integer
+                  default: 0
+                ids:
+                  description: Ids of specific restaurants to get
+                  type: array
+                  items:
+                    type: integer
+                  example:
+                  - 205
+                  - 206
+                  - 207
+      responses:
+        '200':
+          description: Success if we were able to get recommended restaurants
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: ok
+                  data:
+                    type: object
+                    properties:
+                      restaurants:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/RestaurantRecommendation'
+components:
+  schemas:
+    RestaurantRecommendation:
+      type: object
+      properties:
+        distance:
+          description: Distance from location
+          type: number
+        restaurant:
+          description: Restaurant data
+          type: object
+          $ref: '#/components/schemas/Restaurant'
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          description: Restaurant location latitude
+          type: number
+        longitude:
+          description: Restaurant location longitude
+          type: number
+    Restaurant:
+      description: Restaurant that is recommended for the user
+      type: object
+      properties:
+        id:
+          description: Restaurant id
+          type: integer
+        name:
+          description: Restaurant name
+          type: string
+        address:
+          description: Restaurant address
+          type: string
+        city:
+          description: Restaurant city
+          type: string
+        state:
+          description: Restaurants state
+          type: string
+        zip:
+          description: Restaurant zip code
+          type: string
+        logo:
+          description: Restaurant image url for the logo
+          type: string
+        timezone:
+          description: Restaurant timezone
+          type: string
+        timezone_offset:
+          description: Offset used for restaurant timezone calculations
+          type: integer
+        phone_number:
+          description: Restaurant phone number
+          type: integer
+        latitude:
+          description: Restaurant location latitude
+          type: number
+        longitude:
+          description: Restaurant location longitude
+          type: number
+        slug:
+          description: SLug for the restaurant
+          type: string
+        commission:
+          description: Restaurant commission
+          type: number
+        delivery_id:
+          description: Restaurant delivery id
+          type: integer
+        notes:
+          description: Restaurant notes
+          type: string
+        email:
+          description: Restaurant email
+          type: string
+        supports_popup:
+          description: Whether restaurant supports popup or not
+          type: integer
+          enum:
+          - 0
+          - 1
+        admin_user_id:
+          description: Id of restaurant admin user
+          type: integer
+        w9_uploaded:
+          description: Whether W9 is uploaded or not
+          type: integer
+          enum:
+          - 0
+          - 1
+        external_location_id:
+          description: Id of external location
+          type: string
+        external_establishment_id:
+          description: Id of restaurant establishment
+          type: string
+        external_establishment_name:
+          description: Retaurant external establishment name
+          type: string
+        coordinates:
+          type: object
+          $ref: '#/components/schemas/Coordinates'

@@ -1,7 +1,29 @@
 aid: 2ndkitchen
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/2ndkitchen.png
 name: 2ndKitchen
-description: 2ndKitchen is a company surfaced as a portfolio company of techstars and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  2ndKitchen was a Chicago-based food-technology startup (Techstars '18) that let
+  businesses without an on-site kitchen — bars, breweries, hotels, and apartment
+  communities — offer custom food menus sourced from nearby partner restaurants,
+  handling ordering, pricing, payment, and delivery on their behalf. The company
+  was acquired by REEF Technology in December 2021 and its 2ndkitchen.com domain
+  now redirects to reeftechnology.com. This API Evangelist profile captures the
+  set of nine microservice OpenAPI definitions still published on the legacy
+  Swagger UI at docs.2ndkitchen.com (authentication, business, user, restaurant,
+  order, pricing, payment, delivery, and indexing services), preserved here as a
+  historical record of the platform's API surface.
 url: https://raw.githubusercontent.com/api-evangelist/2ndkitchen/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,17 +31,188 @@ x-backed-by:
 - techstars
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-status: acquired
+x-acquired-by: reef-technology
+x-acquired-date: '2021-12'
 specificationVersion: '0.20'
 created: '2026-07-17'
 modified: '2026-07-17'
 tags:
 - Company
-apis: []
+- Food Technology
+- Ghost Kitchen
+- Restaurant
+- Food Delivery
+- Ordering
+- Payments
+- Hospitality
+- Techstars
+- Acquired
+apis:
+- aid: 2ndkitchen:2ndkitchen-authentication-api
+  name: 2ndKitchen Authentication API
+  description: The Authentication API from 2ndKitchen — 5 operation(s) for authentication.
+  humanURL: https://docs.2ndkitchen.com/
+  baseURL: https://auth-staging.2ndkitchen.com
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/2ndkitchen-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://docs.2ndkitchen.com/
+- aid: 2ndkitchen:2ndkitchen-brand-api
+  name: 2ndKitchen Brand API
+  description: The Brand API from 2ndKitchen — 1 operation(s) for brand.
+  humanURL: https://docs.2ndkitchen.com/
+  baseURL: https://auth-staging.2ndkitchen.com
+  tags:
+  - Brand
+  properties:
+  - type: OpenAPI
+    url: openapi/2ndkitchen-brand-api-openapi.yml
+  - type: Documentation
+    url: https://docs.2ndkitchen.com/
+- aid: 2ndkitchen:2ndkitchen-business-api
+  name: 2ndKitchen Business API
+  description: The Business API from 2ndKitchen — 1 operation(s) for business.
+  humanURL: https://docs.2ndkitchen.com/
+  baseURL: https://auth-staging.2ndkitchen.com
+  tags:
+  - Business
+  properties:
+  - type: OpenAPI
+    url: openapi/2ndkitchen-business-api-openapi.yml
+  - type: Documentation
+    url: https://docs.2ndkitchen.com/
+- aid: 2ndkitchen:2ndkitchen-coupons-api
+  name: 2ndKitchen Coupons API
+  description: The Coupons API from 2ndKitchen — 1 operation(s) for coupons.
+  humanURL: https://docs.2ndkitchen.com/
+  baseURL: https://auth-staging.2ndkitchen.com
+  tags:
+  - Coupons
+  properties:
+  - type: OpenAPI
+    url: openapi/2ndkitchen-coupons-api-openapi.yml
+  - type: Documentation
+    url: https://docs.2ndkitchen.com/
+- aid: 2ndkitchen:2ndkitchen-deliveries-api
+  name: 2ndKitchen Deliveries API
+  description: The Deliveries API from 2ndKitchen — 1 operation(s) for deliveries.
+  humanURL: https://docs.2ndkitchen.com/
+  baseURL: https://auth-staging.2ndkitchen.com
+  tags:
+  - Deliveries
+  properties:
+  - type: OpenAPI
+    url: openapi/2ndkitchen-deliveries-api-openapi.yml
+  - type: Documentation
+    url: https://docs.2ndkitchen.com/
+- aid: 2ndkitchen:2ndkitchen-orders-api
+  name: 2ndKitchen Orders API
+  description: The Orders API from 2ndKitchen — 3 operation(s) for orders.
+  humanURL: https://docs.2ndkitchen.com/
+  baseURL: https://auth-staging.2ndkitchen.com
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/2ndkitchen-orders-api-openapi.yml
+  - type: Documentation
+    url: https://docs.2ndkitchen.com/
+- aid: 2ndkitchen:2ndkitchen-payment-api
+  name: 2ndKitchen Payment API
+  description: The Payment API from 2ndKitchen — 1 operation(s) for payment.
+  humanURL: https://docs.2ndkitchen.com/
+  baseURL: https://auth-staging.2ndkitchen.com
+  tags:
+  - Payment
+  properties:
+  - type: OpenAPI
+    url: openapi/2ndkitchen-payment-api-openapi.yml
+  - type: Documentation
+    url: https://docs.2ndkitchen.com/
+- aid: 2ndkitchen:2ndkitchen-product-api
+  name: 2ndKitchen Product API
+  description: The Product API from 2ndKitchen — 4 operation(s) for product.
+  humanURL: https://docs.2ndkitchen.com/
+  baseURL: https://auth-staging.2ndkitchen.com
+  tags:
+  - Product
+  properties:
+  - type: OpenAPI
+    url: openapi/2ndkitchen-product-api-openapi.yml
+  - type: Documentation
+    url: https://docs.2ndkitchen.com/
+- aid: 2ndkitchen:2ndkitchen-products-api
+  name: 2ndKitchen Products API
+  description: The Products API from 2ndKitchen — 1 operation(s) for products.
+  humanURL: https://docs.2ndkitchen.com/
+  baseURL: https://auth-staging.2ndkitchen.com
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/2ndkitchen-products-api-openapi.yml
+  - type: Documentation
+    url: https://docs.2ndkitchen.com/
+- aid: 2ndkitchen:2ndkitchen-restaurant-api
+  name: 2ndKitchen Restaurant API
+  description: The Restaurant API from 2ndKitchen — 1 operation(s) for restaurant.
+  humanURL: https://docs.2ndkitchen.com/
+  baseURL: https://auth-staging.2ndkitchen.com
+  tags:
+  - Restaurant
+  properties:
+  - type: OpenAPI
+    url: openapi/2ndkitchen-restaurant-api-openapi.yml
+  - type: Documentation
+    url: https://docs.2ndkitchen.com/
+- aid: 2ndkitchen:2ndkitchen-restaurants-api
+  name: 2ndKitchen Restaurants API
+  description: The Restaurants API from 2ndKitchen — 1 operation(s) for restaurants.
+  humanURL: https://docs.2ndkitchen.com/
+  baseURL: https://auth-staging.2ndkitchen.com
+  tags:
+  - Restaurants
+  properties:
+  - type: OpenAPI
+    url: openapi/2ndkitchen-restaurants-api-openapi.yml
+  - type: Documentation
+    url: https://docs.2ndkitchen.com/
+- aid: 2ndkitchen:2ndkitchen-users-api
+  name: 2ndKitchen Users API
+  description: The Users API from 2ndKitchen — 4 operation(s) for users.
+  humanURL: https://docs.2ndkitchen.com/
+  baseURL: https://auth-staging.2ndkitchen.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/2ndkitchen-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.2ndkitchen.com/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/2ndkitchen-domain-security.yml
+- type: Authentication
+  url: authentication/2ndkitchen-authentication.yml
+- type: DataModel
+  url: data-model/2ndkitchen-data-model.yml
 - type: Website
   url: https://2ndkitchen.com/
+- type: Documentation
+  url: https://docs.2ndkitchen.com/
+- type: APIReference
+  url: https://docs.2ndkitchen.com/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

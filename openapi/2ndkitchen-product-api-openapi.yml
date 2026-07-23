@@ -1,0 +1,341 @@
+openapi: 3.0.0
+info:
+  title: 2ndKitchen - Service Authentication Product API
+  version: '1.0'
+servers:
+- url: https://auth-staging.2ndkitchen.com
+  description: staging
+tags:
+- name: Product
+paths:
+  /menus/{menu_id}/products:
+    parameters:
+    - in: path
+      required: true
+      name: menu_id
+      description: The id for the menu
+      example: 205
+      schema:
+        type: integer
+    - in: query
+      required: false
+      name: stock_status
+      description: Whether to get only products in stock
+      example: 1
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+    get:
+      security:
+      - bearerAuth: []
+      description: Get the products for a given restaurant menu
+      tags:
+      - Product
+      responses:
+        '200':
+          description: Returns the products for this menu
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: ok
+                  data:
+                    type: object
+                    properties:
+                      products:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Product'
+  /product_labels:
+    parameters:
+    - in: query
+      required: true
+      name: ids
+      description: Product label ids to fetch
+      example: 1, 2, 3
+      schema:
+        type: array
+        items:
+          type: integer
+    get:
+      security:
+      - bearerAuth: []
+      description: Get product labels
+      tags:
+      - Product
+      responses:
+        '200':
+          description: Returns labels
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: ok
+                  data:
+                    type: object
+                    properties:
+                      brands:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Brand'
+                      labels:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ProductLabel'
+  /product_categories:
+    parameters:
+    - in: query
+      required: true
+      name: ids
+      description: Category ids to fetch
+      example: 205,206
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/ProductCategory'
+    get:
+      security:
+      - bearerAuth: []
+      description: Get product categories
+      tags:
+      - Product
+      responses:
+        '200':
+          description: Returns categories
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: ok
+                  data:
+                    type: object
+                    properties:
+                      categories:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ProductCategory'
+  /menus/products:
+    parameters:
+    - in: query
+      required: true
+      name: menu_ids
+      description: Ids for menus that we fetch products from
+      example: 205,206
+      schema:
+        type: array
+        items:
+          type: integer
+    - in: query
+      required: false
+      name: product_ids
+      description: Product ids to fetch
+      example: 37187,37188
+      schema:
+        type: array
+        items:
+          type: integer
+    - in: query
+      required: false
+      name: stock_status
+      description: Whether the products to fetch are in stock or not
+      example: 1
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+    get:
+      security:
+      - bearerAuth: []
+      description: Get products from different menus
+      tags:
+      - Product
+      responses:
+        '200':
+          description: Returns the specified products for each menu id given
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: ok
+                  data:
+                    type: object
+                    properties:
+                      menus_products:
+                        type: object
+                        properties:
+                          menu_id:
+                            description: id for the menu that the product belongs to
+                            type: integer
+                          products:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/Product'
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        category_id:
+          type: integer
+          description: ''
+        comments_enabled:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        contains_alcohol:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        description:
+          type: string
+          description: ''
+        id:
+          type: integer
+          description: ''
+        img:
+          type: string
+          description: ''
+        item_img:
+          type: string
+          description: ''
+        name:
+          type: string
+          description: ''
+        price:
+          type: number
+          description: ''
+        metas:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductMeta'
+          description: ''
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuProductLabel'
+          description: label of the product
+        stock_status:
+          type: integer
+          description: is product available?
+          enum:
+          - 0
+          - 1
+    ProductCategory:
+      type: object
+      properties:
+        external_id:
+          type: integer
+        name:
+          type: string
+        id:
+          type: integer
+        is_deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
+    MenuProductLabel:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        is_deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
+    ProductMeta:
+      type: object
+      properties:
+        id:
+          type: integer
+        external_id:
+          type: string
+        key:
+          type: string
+        max_allowed_valued:
+          type: integer
+        min_required_values:
+          type: integer
+        position:
+          type: string
+        type:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductMetaValue'
+          description: ''
+    ProductMetaValue:
+      type: object
+      properties:
+        cogs:
+          type: number
+        external_id:
+          type: integer
+        id:
+          type: integer
+        meta_id:
+          type: integer
+        name:
+          type: string
+        position:
+          type: string
+        price:
+          type: number
+        stock_status:
+          type: integer
+          enum:
+          - 0
+          - 1
+    Brand:
+      type: object
+      properties:
+        external_id:
+          type: integer
+        name:
+          type: string
+        id:
+          type: integer
+        is_deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
+        description:
+          type: string
+        img:
+          type: string
+        created_date:
+          type: string
+    ProductLabel:
+      type: object
+      properties:
+        id:
+          type: integer
+        is_auto_generated:
+          type: integer
+          enum:
+          - 0
+          - 1
