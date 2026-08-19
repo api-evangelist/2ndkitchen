@@ -1,0 +1,499 @@
+{
+  "item": [
+    {
+      "id": "e1f6473f-a970-4a78-8d4d-72ce15c854f1",
+      "name": "Authentication",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0ce33187-e1d0-4b19-8088-46fd1f682235",
+          "name": "Authenticate a user via phone number",
+          "request": {
+            "name": "Authenticate a user via phone number",
+            "description": {
+              "content": "Authenticate a user via phone number",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authenticate",
+                "phone_number"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_number\": \"<string>\",\n  \"business_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed6ac4eb-dd22-4b2b-847b-3a703933d2b8",
+              "name": "Returns the access token and the refresh token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticate",
+                    "phone_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone_number\": \"<string>\",\n  \"business_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"access_token\": \"ffc4ff\",\n    \"refresh_token\": \"kt6kht\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b157f37e-bbd1-418e-9683-58fd9f54f0d2",
+          "name": "Authenticate a user via google",
+          "request": {
+            "name": "Authenticate a user via google",
+            "description": {
+              "content": "Authenticate a user via google",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authenticate",
+                "google"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"business_id\": \"<integer>\",\n  \"redirect_uri\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ab759c91-84be-452b-9e92-cef511b9ae44",
+              "name": "Returns the access token and the refresh token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticate",
+                    "google"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"business_id\": \"<integer>\",\n  \"redirect_uri\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"access_token\": \"ffc4ff\",\n    \"refresh_token\": \"kt6kht\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "494ef351-fc36-4eca-9132-d20398cc858f",
+          "name": "Authenticate a user via facebook",
+          "request": {
+            "name": "Authenticate a user via facebook",
+            "description": {
+              "content": "Authenticate a user via facebook",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authenticate",
+                "facebook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"business_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d68bdc39-34ac-4046-868f-e69d2e70cc94",
+              "name": "Returns the access token and the refresh token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticate",
+                    "facebook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"business_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"access_token\": \"ffc4ff\",\n    \"refresh_token\": \"kt6kht\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "871c55eb-f8d7-4592-8332-46d26b5e3bf0",
+          "name": "Authenticate a user via phone number",
+          "request": {
+            "name": "Authenticate a user via phone number",
+            "description": {
+              "content": "Authenticate a user via phone number",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authenticate",
+                "phone_number",
+                "v2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_number\": \"<string>\",\n  \"verification_code\": \"<string>\",\n  \"business_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4561e42-33bd-4342-9fc5-203aa00aa143",
+              "name": "Returns the access token and the refresh token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticate",
+                    "phone_number",
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone_number\": \"<string>\",\n  \"verification_code\": \"<string>\",\n  \"business_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"access_token\": \"ffc4ff\",\n    \"refresh_token\": \"kt6kht\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b268a2ce-1fb6-4ef7-b418-f118576354a2",
+          "name": "Authenticate a user via phone number",
+          "request": {
+            "name": "Authenticate a user via phone number",
+            "description": {
+              "content": "Authenticate a user via phone number",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verifications",
+                "phone_number"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "386f4c00-b888-43ad-a63f-819169916511",
+              "name": "Sends a temporary verification token to the provided phone number",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "phone_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone_number\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth-staging.2ndkitchen.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a60a54f0-7246-4c90-a0d0-4132d5b79d81",
+    "name": "2ndKitchen - Service Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

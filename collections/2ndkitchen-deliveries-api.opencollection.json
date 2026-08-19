@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "2ndKitchen - Service Authentication Deliveries API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deliveries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /deliveries/{delivery_id}/job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth-staging.2ndkitchen.com/deliveries/:delivery_id/job",
+            "params": [
+              {
+                "name": "delivery_id",
+                "value": "146136",
+                "type": "path",
+                "description": "The id for the delivery"
+              }
+            ]
+          },
+          "docs": "Get the pickup and dropoff ETA for a delivery job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

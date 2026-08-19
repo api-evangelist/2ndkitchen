@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "2ndKitchen - Service Authentication Business API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Business",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /businesses/{business_id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth-staging.2ndkitchen.com/businesses/:business_id",
+            "params": [
+              {
+                "name": "business_id",
+                "value": "988",
+                "type": "path",
+                "description": "The id for the business"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Query string for objects on the business to include - menu, delivery_modes, etc."
+              }
+            ]
+          },
+          "docs": "Get a business"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

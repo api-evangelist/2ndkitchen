@@ -1,0 +1,114 @@
+{
+  "item": [
+    {
+      "id": "d843655a-e509-4dc6-9a08-d3415ce9a845",
+      "name": "Restaurant",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cdd3d187-fb4b-4356-a059-30c458fec664",
+          "name": "Get a list of restaurants by id",
+          "request": {
+            "name": "Get a list of restaurants by id",
+            "description": {
+              "content": "Get a list of restaurants by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restaurants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<integer>",
+                  "description": "(Required) Restaurant ids"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "381ac3fd-f3f2-42e6-8e6b-f7d32e8f5798",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restaurants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"restaurants\": [\n    {\n      \"address\": \"string\",\n      \"admin_user_id\": 4728,\n      \"city\": \"string\",\n      \"commission\": 9461.212522913494,\n      \"country\": \"string\",\n      \"courier_pickup_instructions\": \"string\",\n      \"currency_code\": \"string\",\n      \"delivery_code\": \"string\",\n      \"delivery_id\": 2740,\n      \"email\": \"string\",\n      \"external_establishment_id\": 320,\n      \"external_establishment_name\": \"string\",\n      \"external_location_id\": \"string\",\n      \"has_printer\": 0,\n      \"id\": 4389,\n      \"integrations\": \"string\",\n      \"is_deleted\": 1,\n      \"latitude\": \"string\",\n      \"launched_date\": \"string\",\n      \"logo\": \"string\",\n      \"longitude\": \"string\",\n      \"name\": \"string\",\n      \"notes\": \"string\",\n      \"password\": \"string\",\n      \"phone_number\": \"string\",\n      \"printer_ip\": \"string\",\n      \"printer_port\": \"string\",\n      \"slug\": \"string\",\n      \"state\": \"string\",\n      \"status\": 2,\n      \"stock_status\": 0,\n      \"stock_status_override\": true,\n      \"supports_popup\": true,\n      \"sync_catalog\": 8591,\n      \"timezone\": \"string\",\n      \"timezone_offset\": \"string\",\n      \"user_name\": \"string\",\n      \"w9_uploaded\": 1410,\n      \"zip\": \"string\",\n      \"opening_hours\": [\n        {\n          \"close_time\": \"string\",\n          \"open_time\": \"string\",\n          \"day_of_the_week\": 0\n        },\n        {\n          \"close_time\": \"string\",\n          \"open_time\": \"string\",\n          \"day_of_the_week\": 5\n        }\n      ],\n      \"opening_hours_exceptions\": [\n        {\n          \"id\": 3883,\n          \"restaurant_id\": 5233,\n          \"start_date\": \"string\",\n          \"end_date\": \"string\",\n          \"open_time\": \"string\",\n          \"close_time\": \"string\",\n          \"is_open\": false,\n          \"title\": \"string\",\n          \"created_date\": \"string\"\n        },\n        {\n          \"id\": 1528,\n          \"restaurant_id\": 5937,\n          \"start_date\": \"string\",\n          \"end_date\": \"string\",\n          \"open_time\": \"string\",\n          \"close_time\": \"string\",\n          \"is_open\": false,\n          \"title\": \"string\",\n          \"created_date\": \"string\"\n        }\n      ]\n    },\n    {\n      \"address\": \"string\",\n      \"admin_user_id\": 8010,\n      \"city\": \"string\",\n      \"commission\": 1267.6284013217244,\n      \"country\": \"string\",\n      \"courier_pickup_instructions\": \"string\",\n      \"currency_code\": \"string\",\n      \"delivery_code\": \"string\",\n      \"delivery_id\": 625,\n      \"email\": \"string\",\n      \"external_establishment_id\": 6715,\n      \"external_establishment_name\": \"string\",\n      \"external_location_id\": \"string\",\n      \"has_printer\": 1,\n      \"id\": 6446,\n      \"integrations\": \"string\",\n      \"is_deleted\": 0,\n      \"latitude\": \"string\",\n      \"launched_date\": \"string\",\n      \"logo\": \"string\",\n      \"longitude\": \"string\",\n      \"name\": \"string\",\n      \"notes\": \"string\",\n      \"password\": \"string\",\n      \"phone_number\": \"string\",\n      \"printer_ip\": \"string\",\n      \"printer_port\": \"string\",\n      \"slug\": \"string\",\n      \"state\": \"string\",\n      \"status\": 2,\n      \"stock_status\": 1,\n      \"stock_status_override\": true,\n      \"supports_popup\": false,\n      \"sync_catalog\": 5054,\n      \"timezone\": \"string\",\n      \"timezone_offset\": \"string\",\n      \"user_name\": \"string\",\n      \"w9_uploaded\": 8739,\n      \"zip\": \"string\",\n      \"opening_hours\": [\n        {\n          \"close_time\": \"string\",\n          \"open_time\": \"string\",\n          \"day_of_the_week\": 5\n        },\n        {\n          \"close_time\": \"string\",\n          \"open_time\": \"string\",\n          \"day_of_the_week\": 3\n        }\n      ],\n      \"opening_hours_exceptions\": [\n        {\n          \"id\": 7396,\n          \"restaurant_id\": 2517,\n          \"start_date\": \"string\",\n          \"end_date\": \"string\",\n          \"open_time\": \"string\",\n          \"close_time\": \"string\",\n          \"is_open\": false,\n          \"title\": \"string\",\n          \"created_date\": \"string\"\n        },\n        {\n          \"id\": 3675,\n          \"restaurant_id\": 2015,\n          \"start_date\": \"string\",\n          \"end_date\": \"string\",\n          \"open_time\": \"string\",\n          \"close_time\": \"string\",\n          \"is_open\": true,\n          \"title\": \"string\",\n          \"created_date\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth-staging.2ndkitchen.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bc0e4366-7912-4aac-9c95-4bce4f02832f",
+    "name": "2ndKitchen - Service Authentication Restaurant API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,631 @@
+{
+  "item": [
+    {
+      "id": "5e8ba7e6-0a07-4ac7-95c1-49e1e1ae77fa",
+      "name": "Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "772d35c9-cef4-454b-ae2b-f6c32db510ae",
+          "name": "Get User object",
+          "request": {
+            "name": "Get User object",
+            "description": {
+              "content": "Get User object",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "172ce788-ebd3-4b38-a8b0-1b9f3052af88",
+              "name": "Returns the user object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"user\": {\n      \"id\": 7843,\n      \"phone_number\": \"string\",\n      \"phone_number_e164\": \"string\",\n      \"first_name\": 5425,\n      \"last_name\": 6117,\n      \"email\": \"string\",\n      \"apartment_number\": 7125,\n      \"picture\": \"string\",\n      \"is_verified\": 1,\n      \"is_active\": 1,\n      \"is_deleted\": 1,\n      \"is_blacklisted\": 1,\n      \"last_verification_sent_date\": \"string\",\n      \"sms_opt_in\": 1,\n      \"business_id\": 4067,\n      \"business_location_id\": 9360,\n      \"created_date\": 9287,\n      \"verified_at\": \"string\",\n      \"activated_at\": \"string\",\n      \"notifications\": [\n        {\n          \"id\": 1543,\n          \"user_id\": 8748,\n          \"type\": 1\n        },\n        {\n          \"id\": 5269,\n          \"user_id\": 5975,\n          \"type\": 1\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d718b7a-1830-4481-b5f5-38c57226a8e4",
+              "name": "User Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"User does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a8cb9e5-de68-49d2-a9dd-3776ce2ede15",
+          "name": "Verify a newly created user",
+          "request": {
+            "name": "Verify a newly created user",
+            "description": {
+              "content": "Verify a newly created user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_id",
+                "verify",
+                "v2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "user_id",
+                  "description": "(Required) The id for the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"<integer>\",\n  \"phone_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "44268013-4ec7-4282-8ccf-bfbfcb918d42",
+              "name": "Returns success if the user was verified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id",
+                    "verify",
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "user_id",
+                      "description": "(Required) The id for the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_id\": \"<integer>\",\n  \"phone_number\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9445ae1d-01ab-4817-8677-2082e5d6c67b",
+              "name": "User not found Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id",
+                    "verify",
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "user_id",
+                      "description": "(Required) The id for the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_id\": \"<integer>\",\n  \"phone_number\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"User not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0416e5c9-b423-4b6d-987c-bb7dbc9f724f",
+          "name": "Verify user verification code",
+          "request": {
+            "name": "Verify user verification code",
+            "description": {
+              "content": "Verify user verification code",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_id",
+                "verify_verification_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "user_id",
+                  "description": "(Required) The id for the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"<integer>\",\n  \"phone_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff78c253-f0dd-4bcb-8ab4-b7d9cdbece60",
+              "name": "Returns the user object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id",
+                    "verify_verification_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "user_id",
+                      "description": "(Required) The id for the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_id\": \"<integer>\",\n  \"phone_number\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"user\": {\n      \"id\": 8235,\n      \"phone_number\": \"string\",\n      \"phone_number_e164\": \"string\",\n      \"first_name\": 4227,\n      \"last_name\": 6571,\n      \"email\": \"string\",\n      \"apartment_number\": 1497,\n      \"picture\": \"string\",\n      \"is_verified\": 1,\n      \"is_active\": 1,\n      \"is_deleted\": 1,\n      \"is_blacklisted\": 1,\n      \"last_verification_sent_date\": \"string\",\n      \"sms_opt_in\": 0,\n      \"business_id\": 1632,\n      \"business_location_id\": 6209,\n      \"created_date\": 7593,\n      \"verified_at\": \"string\",\n      \"activated_at\": \"string\",\n      \"notifications\": [\n        {\n          \"id\": 7184,\n          \"user_id\": 6078,\n          \"type\": 1\n        },\n        {\n          \"id\": 8063,\n          \"user_id\": 3644,\n          \"type\": 2\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecb19220-f72b-417a-bc48-95635615a401",
+              "name": "Verification error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id",
+                    "verify_verification_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "user_id",
+                      "description": "(Required) The id for the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_id\": \"<integer>\",\n  \"phone_number\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"User already verified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1644e7d6-a1f2-49a6-a548-81d8ba1dfa0a",
+          "name": "Activate the user",
+          "request": {
+            "name": "Activate the user",
+            "description": {
+              "content": "Activate the user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_id",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "user_id",
+                  "description": "(Required) The id for the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"<integer>\",\n  \"email\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"apartment_number\": \"<integer>\",\n  \"business_location_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8153e567-0b5c-494f-8395-ee4a10ca539c",
+              "name": "Returns the user object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "user_id",
+                      "description": "(Required) The id for the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_id\": \"<integer>\",\n  \"email\": \"jsmith@gmail.com\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Smith\",\n  \"apartment_number\": \"<integer>\",\n  \"business_location_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"user\": {\n      \"id\": 8235,\n      \"phone_number\": \"string\",\n      \"phone_number_e164\": \"string\",\n      \"first_name\": 4227,\n      \"last_name\": 6571,\n      \"email\": \"string\",\n      \"apartment_number\": 1497,\n      \"picture\": \"string\",\n      \"is_verified\": 1,\n      \"is_active\": 1,\n      \"is_deleted\": 1,\n      \"is_blacklisted\": 1,\n      \"last_verification_sent_date\": \"string\",\n      \"sms_opt_in\": 0,\n      \"business_id\": 1632,\n      \"business_location_id\": 6209,\n      \"created_date\": 7593,\n      \"verified_at\": \"string\",\n      \"activated_at\": \"string\",\n      \"notifications\": [\n        {\n          \"id\": 7184,\n          \"user_id\": 6078,\n          \"type\": 1\n        },\n        {\n          \"id\": 8063,\n          \"user_id\": 3644,\n          \"type\": 2\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2876adf7-c17e-456d-9ce3-98bc5f246cc6",
+              "name": "User Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "user_id",
+                      "description": "(Required) The id for the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_id\": \"<integer>\",\n  \"email\": \"jsmith@gmail.com\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Smith\",\n  \"apartment_number\": \"<integer>\",\n  \"business_location_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"User is already active!\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth-staging.2ndkitchen.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "42d0592b-25ef-4d56-9ebe-7b184e892502",
+    "name": "2ndKitchen - Service Authentication Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

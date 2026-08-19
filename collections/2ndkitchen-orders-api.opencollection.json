@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "2ndKitchen - Service Authentication Orders API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /orders/create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth-staging.2ndkitchen.com/orders/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Places a new order in the system"
+        },
+        {
+          "info": {
+            "name": "PUT /orders/{order_id}/status/{status}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://auth-staging.2ndkitchen.com/orders/:order_id/status/:status",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "ROYALOAK-123456",
+                "type": "path",
+                "description": "The id for the order"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "path",
+                "description": "Order Status:\n * `0` - NEW\n * `1` - PROCESSING\n * `2` - COMPLETED\n * `3` - PARTIAL\n * `4` - CANCELLED\n * `5` - RECEIVED\n"
+              }
+            ]
+          },
+          "docs": "Updates the status of an order"
+        },
+        {
+          "info": {
+            "name": "GET /order/{external_id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth-staging.2ndkitchen.com/order/:external_id",
+            "params": [
+              {
+                "name": "external_id",
+                "value": "ROYALOAK-123456",
+                "type": "path",
+                "description": "The id for the order - same as order id"
+              }
+            ]
+          },
+          "docs": "Get an Order that was made in the system"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

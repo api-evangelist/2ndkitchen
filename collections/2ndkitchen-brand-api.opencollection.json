@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "2ndKitchen - Service Authentication Brand API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Brand",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /brands",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth-staging.2ndkitchen.com/brands",
+            "params": [
+              {
+                "name": "brand_ids",
+                "value": "1,2",
+                "type": "query",
+                "description": "Ids for the brands we want"
+              }
+            ]
+          },
+          "docs": "Get a list of brands for a given restaurant menu"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

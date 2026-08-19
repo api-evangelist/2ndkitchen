@@ -1,0 +1,124 @@
+{
+  "item": [
+    {
+      "id": "b0ff9197-1c5c-40aa-bd35-32d3da6d8cd6",
+      "name": "Brand",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e106fd43-942b-4fc5-a06c-c4bf10e23706",
+          "name": "Get a list of brands for a given restaurant menu",
+          "request": {
+            "name": "Get a list of brands for a given restaurant menu",
+            "description": {
+              "content": "Get a list of brands for a given restaurant menu",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "brands"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "brand_ids",
+                  "value": "<integer>",
+                  "description": "(Required) Ids for the brands we want"
+                },
+                {
+                  "disabled": false,
+                  "key": "brand_ids",
+                  "value": "<integer>",
+                  "description": "(Required) Ids for the brands we want"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de05bdda-4159-4cb6-8aac-088318067bdd",
+              "name": "Returns the brands we wanted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "brands"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "brand_ids",
+                      "value": "1"
+                    },
+                    {
+                      "key": "brand_ids",
+                      "value": "2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"products\": [\n      {\n        \"external_id\": 7465,\n        \"name\": \"string\",\n        \"id\": 5938,\n        \"is_deleted\": 1,\n        \"description\": \"string\",\n        \"img\": \"string\",\n        \"created_date\": \"string\"\n      },\n      {\n        \"external_id\": 4271,\n        \"name\": \"string\",\n        \"id\": 915,\n        \"is_deleted\": 1,\n        \"description\": \"string\",\n        \"img\": \"string\",\n        \"created_date\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth-staging.2ndkitchen.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "47572045-3c28-4395-9317-6363269f2473",
+    "name": "2ndKitchen - Service Authentication Brand API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

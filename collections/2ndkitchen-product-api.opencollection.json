@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "2ndKitchen - Service Authentication Product API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /menus/{menu_id}/products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth-staging.2ndkitchen.com/menus/:menu_id/products",
+            "params": [
+              {
+                "name": "menu_id",
+                "value": "205",
+                "type": "path",
+                "description": "The id for the menu"
+              },
+              {
+                "name": "stock_status",
+                "value": "1",
+                "type": "query",
+                "description": "Whether to get only products in stock"
+              }
+            ]
+          },
+          "docs": "Get the products for a given restaurant menu"
+        },
+        {
+          "info": {
+            "name": "GET /product_labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth-staging.2ndkitchen.com/product_labels",
+            "params": [
+              {
+                "name": "ids",
+                "value": "1, 2, 3",
+                "type": "query",
+                "description": "Product label ids to fetch"
+              }
+            ]
+          },
+          "docs": "Get product labels"
+        },
+        {
+          "info": {
+            "name": "GET /product_categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth-staging.2ndkitchen.com/product_categories",
+            "params": [
+              {
+                "name": "ids",
+                "value": "205,206",
+                "type": "query",
+                "description": "Category ids to fetch"
+              }
+            ]
+          },
+          "docs": "Get product categories"
+        },
+        {
+          "info": {
+            "name": "GET /menus/products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth-staging.2ndkitchen.com/menus/products",
+            "params": [
+              {
+                "name": "menu_ids",
+                "value": "205,206",
+                "type": "query",
+                "description": "Ids for menus that we fetch products from"
+              },
+              {
+                "name": "product_ids",
+                "value": "37187,37188",
+                "type": "query",
+                "description": "Product ids to fetch"
+              },
+              {
+                "name": "stock_status",
+                "value": "1",
+                "type": "query",
+                "description": "Whether the products to fetch are in stock or not"
+              }
+            ]
+          },
+          "docs": "Get products from different menus"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

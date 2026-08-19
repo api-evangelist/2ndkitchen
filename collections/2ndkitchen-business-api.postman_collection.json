@@ -1,0 +1,131 @@
+{
+  "item": [
+    {
+      "id": "a7b8217f-6d6f-40ae-a3fd-0b434bf75779",
+      "name": "Business",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d47623e8-0dd4-4006-9bab-699780ae7a7f",
+          "name": "Get a business",
+          "request": {
+            "name": "Get a business",
+            "description": {
+              "content": "Get a business",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "businesses",
+                ":business_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Query string for objects on the business to include - menu, delivery_modes, etc."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "business_id",
+                  "description": "(Required) The id for the business"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "a1cb5b1e-523d-48bb-a303-32b4d4797797",
+              "name": "Returns a Business object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses",
+                    ":business_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "business_id",
+                      "description": "(Required) The id for the business"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"business\": {\n    \"address\": \"string\",\n    \"admin_user_id\": 9558,\n    \"allow_asap\": true,\n    \"city\": \"string\",\n    \"commission\": 6850.803799959536,\n    \"commission_threshold\": 8649.693914724761,\n    \"country\": \"string\",\n    \"currency_code\": \"string\",\n    \"customer_pickup_area_instructions\": \"string\",\n    \"delivery_mode\": 4949,\n    \"dropoff_instructions\": \"string\",\n    \"email\": \"string\",\n    \"external_establishment_id\": 4985,\n    \"external_establishment_name\": \"string\",\n    \"external_location_id\": 2786,\n    \"hub_location_id\": 5701,\n    \"id\": 9920,\n    \"img\": \"string\",\n    \"is_active\": 0,\n    \"is_deleted\": 1,\n    \"latitude\": \"string\",\n    \"launch_date\": \"string\",\n    \"logo\": \"string\",\n    \"longitude\": \"string\",\n    \"main_url\": \"string\",\n    \"markup_rules\": \"string\",\n    \"min_order_amount\": 4992.006069071934,\n    \"name\": \"string\",\n    \"notes\": \"string\",\n    \"notification_interval\": \"string\",\n    \"opening_hours\": [\n      {\n        \"close_time\": \"string\",\n        \"open_time\": \"string\",\n        \"day_of_the_week\": 0\n      },\n      {\n        \"close_time\": \"string\",\n        \"open_time\": \"string\",\n        \"day_of_the_week\": 1\n      }\n    ],\n    \"kiosks\": [\n      {\n        \"business_id\": 179,\n        \"name\": \"string\",\n        \"last_seen\": \"string\",\n        \"battery_status\": 121,\n        \"is_battery_charging\": 1,\n        \"is_locked\": 1,\n        \"external_id\": 4750,\n        \"external_name\": \"string\",\n        \"make\": \"string\",\n        \"os_version\": \"string\",\n        \"last_seen_external\": \"string\",\n        \"is_active\": 0,\n        \"payment_mode\": 5,\n        \"is_default\": false\n      },\n      {\n        \"business_id\": 7515,\n        \"name\": \"string\",\n        \"last_seen\": \"string\",\n        \"battery_status\": 9779,\n        \"is_battery_charging\": 1,\n        \"is_locked\": 1,\n        \"external_id\": 9316,\n        \"external_name\": \"string\",\n        \"make\": \"string\",\n        \"os_version\": \"string\",\n        \"last_seen_external\": \"string\",\n        \"is_active\": 0,\n        \"payment_mode\": 4,\n        \"is_default\": true\n      }\n    ],\n    \"phone_number\": \"string\",\n    \"pickup_area_instructions\": \"string\",\n    \"review_link\": \"string\",\n    \"service_fee\": 3999.3495222139054,\n    \"slug\": \"string\",\n    \"state\": \"string\",\n    \"stock_status\": 8346,\n    \"tax\": 4249.998957720479,\n    \"timezone\": \"string\",\n    \"timezone_offset\": \"string\",\n    \"tip_commission\": 8565.449713957893,\n    \"tookan_team_id\": 1559,\n    \"type\": 1,\n    \"unit_count\": 9129,\n    \"w9_uploaded\": true,\n    \"zip\": \"string\",\n    \"menus\": [\n      {\n        \"courier_id\": 3,\n        \"delivery_fee\": 3946.045837236881,\n        \"delivery_mode\": 2,\n        \"delivery_range\": \"string\",\n        \"event_id\": 9049,\n        \"id\": 6276,\n        \"is_backup\": 0,\n        \"is_late_night\": 0,\n        \"min_order_amount\": 3855.3473869810427,\n        \"name\": \"string\",\n        \"pre_order_allowed\": 1,\n        \"restaurant_commission\": 6200.755774805744,\n        \"restaurant_id\": 258,\n        \"stock_status\": 1,\n        \"stock_status_override\": true,\n        \"theme_id\": 4341,\n        \"type\": 2,\n        \"opening_hours\": [\n          {\n            \"close_time\": \"string\",\n            \"open_time\": \"string\",\n            \"day_of_the_week\": 3\n          },\n          {\n            \"close_time\": \"string\",\n            \"open_time\": \"string\",\n            \"day_of_the_week\": 3\n          }\n        ],\n        \"products\": [\n          {\n            \"id\": 1987,\n            \"category_id\": 7453,\n            \"name\": \"The BBQ Sandwich\",\n            \"position\": 5972,\n            \"price\": 1244.3574174354333\n          },\n          {\n            \"id\": 1757,\n            \"category_id\": 5341,\n            \"name\": \"The BBQ Sandwich\",\n            \"position\": 298,\n            \"price\": 4191.283662296915\n          }\n        ],\n        \"products_categories\": [\n          {\n            \"category_id\": 3232,\n            \"name\": \"string\",\n            \"position\": 5955\n          },\n          {\n            \"category_id\": 4609,\n            \"name\": \"string\",\n            \"position\": 7933\n          }\n        ],\n        \"payment_methods\": [\n          {\n            \"id\": 9175,\n            \"type\": 3\n          },\n          {\n            \"id\": 7279,\n            \"type\": 1\n          }\n        ],\n        \"delivery_modes\": [\n          {\n            \"id\": 2017,\n            \"delivery_mode\": 1,\n            \"is_default\": 1\n          },\n          {\n            \"id\": 9956,\n            \"delivery_mode\": 2,\n            \"is_default\": 0\n          }\n        ]\n      },\n      {\n        \"courier_id\": 1,\n        \"delivery_fee\": 5226.779663065319,\n        \"delivery_mode\": 1,\n        \"delivery_range\": \"string\",\n        \"event_id\": 4261,\n        \"id\": 4868,\n        \"is_backup\": 1,\n        \"is_late_night\": 1,\n        \"min_order_amount\": 2083.661796450392,\n        \"name\": \"string\",\n        \"pre_order_allowed\": 0,\n        \"restaurant_commission\": 4458.331976254064,\n        \"restaurant_id\": 4903,\n        \"stock_status\": 1,\n        \"stock_status_override\": true,\n        \"theme_id\": 3429,\n        \"type\": 0,\n        \"opening_hours\": [\n          {\n            \"close_time\": \"string\",\n            \"open_time\": \"string\",\n            \"day_of_the_week\": 1\n          },\n          {\n            \"close_time\": \"string\",\n            \"open_time\": \"string\",\n            \"day_of_the_week\": 4\n          }\n        ],\n        \"products\": [\n          {\n            \"id\": 4028,\n            \"category_id\": 8037,\n            \"name\": \"The BBQ Sandwich\",\n            \"position\": 203,\n            \"price\": 3305.7926880538603\n          },\n          {\n            \"id\": 2883,\n            \"category_id\": 7971,\n            \"name\": \"The BBQ Sandwich\",\n            \"position\": 525,\n            \"price\": 1287.3749664975699\n          }\n        ],\n        \"products_categories\": [\n          {\n            \"category_id\": 9600,\n            \"name\": \"string\",\n            \"position\": 9638\n          },\n          {\n            \"category_id\": 3677,\n            \"name\": \"string\",\n            \"position\": 5217\n          }\n        ],\n        \"payment_methods\": [\n          {\n            \"id\": 8116,\n            \"type\": 3\n          },\n          {\n            \"id\": 6908,\n            \"type\": 3\n          }\n        ],\n        \"delivery_modes\": [\n          {\n            \"id\": 4244,\n            \"delivery_mode\": 5,\n            \"is_default\": 0\n          },\n          {\n            \"id\": 2173,\n            \"delivery_mode\": 0,\n            \"is_default\": 0\n          }\n        ]\n      }\n    ],\n    \"delivery_modes\": [\n      {\n        \"id\": 5397,\n        \"delivery_mode\": 2,\n        \"is_default\": 1\n      },\n      {\n        \"id\": 694,\n        \"delivery_mode\": 3,\n        \"is_default\": 0\n      }\n    ],\n    \"tip_options\": [\n      {\n        \"value\": 7390.504962482827,\n        \"is_default\": 1\n      },\n      {\n        \"value\": 4542.748585434225,\n        \"is_default\": 0\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth-staging.2ndkitchen.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "44d3d9da-60dd-4ee3-adef-67e5953869a0",
+    "name": "2ndKitchen - Service Authentication Business API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

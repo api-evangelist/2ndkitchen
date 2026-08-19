@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "4d3143f6-87a0-4e83-abe3-c3143692680f",
+      "name": "Restaurants",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2cfcc9c1-cbd6-41f2-b5bc-043952345280",
+          "name": "Get recommended restaurants based on distance",
+          "request": {
+            "name": "Get recommended restaurants based on distance",
+            "description": {
+              "content": "Get recommended restaurants based on distance",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recommend",
+                "restaurants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Query string for the longitude, latitude, distance from the user in miles, and order by filter to get."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"latitude\": \"<integer>\",\n  \"longitude\": \"<integer>\",\n  \"distance\": 2,\n  \"limit\": 10,\n  \"order_by\": \"distance\",\n  \"offset\": 0,\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "259d119c-8132-46ec-8c9f-2ac3f6abb5cf",
+              "name": "Success if we were able to get recommended restaurants",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recommend",
+                    "restaurants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"latitude\": \"<integer>\",\n  \"longitude\": \"<integer>\",\n  \"distance\": 2,\n  \"limit\": 10,\n  \"order_by\": \"distance\",\n  \"offset\": 0,\n  \"ids\": [\n    205,\n    206,\n    207\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"restaurants\": [\n      {\n        \"distance\": 5227.9901496120765,\n        \"restaurant\": {\n          \"id\": 3012,\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"zip\": \"string\",\n          \"logo\": \"string\",\n          \"timezone\": \"string\",\n          \"timezone_offset\": 3061,\n          \"phone_number\": 8416,\n          \"latitude\": 2730.9674467521127,\n          \"longitude\": 365.999476672928,\n          \"slug\": \"string\",\n          \"commission\": 8851.815839694667,\n          \"delivery_id\": 3462,\n          \"notes\": \"string\",\n          \"email\": \"string\",\n          \"supports_popup\": 0,\n          \"admin_user_id\": 8464,\n          \"w9_uploaded\": 1,\n          \"external_location_id\": \"string\",\n          \"external_establishment_id\": \"string\",\n          \"external_establishment_name\": \"string\",\n          \"coordinates\": {\n            \"latitude\": 2301.9744405679166,\n            \"longitude\": 3155.6997253554186\n          }\n        }\n      },\n      {\n        \"distance\": 4230.382689809034,\n        \"restaurant\": {\n          \"id\": 2617,\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"zip\": \"string\",\n          \"logo\": \"string\",\n          \"timezone\": \"string\",\n          \"timezone_offset\": 2546,\n          \"phone_number\": 6230,\n          \"latitude\": 5998.655332785153,\n          \"longitude\": 8450.954094253535,\n          \"slug\": \"string\",\n          \"commission\": 4466.082779796426,\n          \"delivery_id\": 4445,\n          \"notes\": \"string\",\n          \"email\": \"string\",\n          \"supports_popup\": 0,\n          \"admin_user_id\": 5059,\n          \"w9_uploaded\": 1,\n          \"external_location_id\": \"string\",\n          \"external_establishment_id\": \"string\",\n          \"external_establishment_name\": \"string\",\n          \"coordinates\": {\n            \"latitude\": 8855.797133424488,\n            \"longitude\": 8477.21587611902\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth-staging.2ndkitchen.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7ce6b285-f681-49a7-af37-f7d3acab0ab1",
+    "name": "2ndKitchen - Service Authentication Restaurants API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

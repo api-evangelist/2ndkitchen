@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "2ndKitchen - Service Authentication Restaurants API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Restaurants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /recommend/restaurants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth-staging.2ndkitchen.com/recommend/restaurants",
+            "params": [
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Query string for the longitude, latitude, distance from the user in miles, and order by filter to get."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get recommended restaurants based on distance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

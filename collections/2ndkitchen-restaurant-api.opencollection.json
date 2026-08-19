@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "2ndKitchen - Service Authentication Restaurant API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Restaurant",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /restaurants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth-staging.2ndkitchen.com/restaurants",
+            "params": [
+              {
+                "name": "ids",
+                "value": "205,206",
+                "type": "query",
+                "description": "Restaurant ids"
+              }
+            ]
+          },
+          "docs": "Get a list of restaurants by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

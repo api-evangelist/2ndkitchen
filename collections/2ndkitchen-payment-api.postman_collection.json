@@ -1,0 +1,121 @@
+{
+  "item": [
+    {
+      "id": "2ebac42f-2010-46d2-b14c-9d824aa97de8",
+      "name": "Payment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f024c8aa-4d63-42a1-bf73-8f8331beb153",
+          "name": "Get user payment methods",
+          "request": {
+            "name": "Get user payment methods",
+            "description": {
+              "content": "Get user payment methods",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_id",
+                "payment_methods"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) The id for the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "69b3e83b-ca0c-49f5-bb16-16b949217cc5",
+              "name": "Returns user payment methods",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id",
+                    "payment_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) The id for the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"payment_methods\": [\n      {\n        \"id\": 6573,\n        \"type\": 1,\n        \"user_id\": 5598,\n        \"provider_id\": 7269,\n        \"external_id\": 8147,\n        \"external_user_id\": 5539,\n        \"card_brand\": \"string\",\n        \"card_last_4_digits\": \"string\",\n        \"card_exp_month\": 3727,\n        \"card_exp_year\": 2845,\n        \"is_default\": 0,\n        \"created_date\": \"string\",\n        \"is_deleted\": 0\n      },\n      {\n        \"id\": 9397,\n        \"type\": 2,\n        \"user_id\": 8737,\n        \"provider_id\": 652,\n        \"external_id\": 2206,\n        \"external_user_id\": 8950,\n        \"card_brand\": \"string\",\n        \"card_last_4_digits\": \"string\",\n        \"card_exp_month\": 6797,\n        \"card_exp_year\": 1658,\n        \"is_default\": 0,\n        \"created_date\": \"string\",\n        \"is_deleted\": 0\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth-staging.2ndkitchen.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8c9d95b9-7959-468d-8722-a74b0aa125b1",
+    "name": "2ndKitchen - Service Authentication Payment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

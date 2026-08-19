@@ -1,0 +1,125 @@
+{
+  "item": [
+    {
+      "id": "d4c04508-46aa-4da1-9c99-5ce88b91ded6",
+      "name": "Coupons",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b31b707f-5b3c-441c-85d7-0a0b463658c6",
+          "name": "Calculates coupon discount",
+          "request": {
+            "name": "Calculates coupon discount",
+            "description": {
+              "content": "Calculates coupon discount",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "coupons",
+                "calc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"business_id\": \"<integer>\",\n    \"price\": \"<number>\",\n    \"delivery_slot\": \"<dateTime>\"\n  },\n  \"id\": \"<integer>\",\n  \"code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21e429de-a118-43d8-adef-d238b906767e",
+              "name": "Returns the discount amount and other coupon data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    "calc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"business_id\": \"<integer>\",\n    \"price\": \"<number>\",\n    \"delivery_slot\": \"2021-10-14 22:38:30.266962\"\n  },\n  \"id\": \"<integer>\",\n  \"code\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"id\": 3231,\n    \"code\": \"string\",\n    \"coupon_type\": 0,\n    \"discount\": 7713.483270985501,\n    \"token\": \"string\",\n    \"type\": 0\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth-staging.2ndkitchen.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8c74b62a-9dc8-43cd-b4e3-0e77dba44217",
+    "name": "2ndKitchen - Service Authentication Coupons API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "item": [
+    {
+      "id": "d3643202-29d9-455a-8195-c4b53c06dcd7",
+      "name": "Products",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c53e41bf-94eb-41e1-9c8d-967078a90388",
+          "name": "Get products from different menus",
+          "request": {
+            "name": "Get products from different menus",
+            "description": {
+              "content": "Get products from different menus",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "menus",
+                "products",
+                "batch_get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"menu_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"product_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"stock_status\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c31c0eb6-8201-48eb-bbdc-993be079c69a",
+              "name": "Returns a list of producs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "menus",
+                    "products",
+                    "batch_get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"menu_ids\": [\n    322,\n    323\n  ],\n  \"product_ids\": [\n    37878,\n    37879\n  ],\n  \"stock_status\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"order_id\": \"ROYALOAK-123456\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth-staging.2ndkitchen.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "55e9f56f-9909-46d8-a3c8-cd5e6b4de8be",
+    "name": "2ndKitchen - Service Authentication Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

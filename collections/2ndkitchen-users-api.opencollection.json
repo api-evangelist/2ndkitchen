@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "2ndKitchen - Service Authentication Users API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /user/me",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth-staging.2ndkitchen.com/user/me"
+          },
+          "docs": "Get User object"
+        },
+        {
+          "info": {
+            "name": "POST /users/{user_id}/verify/v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth-staging.2ndkitchen.com/users/:user_id/verify/v2",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "2",
+                "type": "path",
+                "description": "The id for the user"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a newly created user"
+        },
+        {
+          "info": {
+            "name": "POST /users/{user_id}/verify_verification_code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth-staging.2ndkitchen.com/users/:user_id/verify_verification_code",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "2",
+                "type": "path",
+                "description": "The id for the user"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify user verification code"
+        },
+        {
+          "info": {
+            "name": "POST /users/{user_id}/activate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth-staging.2ndkitchen.com/users/:user_id/activate",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "2",
+                "type": "path",
+                "description": "The id for the user"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate the user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

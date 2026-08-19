@@ -1,0 +1,438 @@
+{
+  "item": [
+    {
+      "id": "1cf4118c-ac90-49de-9c00-f77db08f128c",
+      "name": "Product",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9982993b-216c-420c-af92-d184704fa018",
+          "name": "Get the products for a given restaurant menu",
+          "request": {
+            "name": "Get the products for a given restaurant menu",
+            "description": {
+              "content": "Get the products for a given restaurant menu",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "menus",
+                ":menu_id",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stock_status",
+                  "value": "<integer>",
+                  "description": "Whether to get only products in stock"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "menu_id",
+                  "description": "(Required) The id for the menu"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "c0f1d359-b0cc-4f7e-b25a-a0c8db254aad",
+              "name": "Returns the products for this menu",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "menus",
+                    ":menu_id",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stock_status",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "menu_id",
+                      "description": "(Required) The id for the menu"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"products\": [\n      {\n        \"category_id\": 4408,\n        \"comments_enabled\": 0,\n        \"contains_alcohol\": 0,\n        \"description\": \"string\",\n        \"id\": 9922,\n        \"img\": \"string\",\n        \"item_img\": \"string\",\n        \"name\": \"string\",\n        \"price\": 4000.345335107425,\n        \"metas\": [\n          {\n            \"id\": 1253,\n            \"external_id\": \"string\",\n            \"key\": \"string\",\n            \"max_allowed_valued\": 5387,\n            \"min_required_values\": 7377,\n            \"position\": \"string\",\n            \"type\": 233,\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": 8768,\n            \"external_id\": \"string\",\n            \"key\": \"string\",\n            \"max_allowed_valued\": 892,\n            \"min_required_values\": 1080,\n            \"position\": \"string\",\n            \"type\": 2641,\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"labels\": [\n          {\n            \"id\": 3412,\n            \"name\": \"string\",\n            \"is_deleted\": 0\n          },\n          {\n            \"id\": 9513,\n            \"name\": \"string\",\n            \"is_deleted\": 0\n          }\n        ],\n        \"stock_status\": 0\n      },\n      {\n        \"category_id\": 8960,\n        \"comments_enabled\": 0,\n        \"contains_alcohol\": 0,\n        \"description\": \"string\",\n        \"id\": 9040,\n        \"img\": \"string\",\n        \"item_img\": \"string\",\n        \"name\": \"string\",\n        \"price\": 2661.27856624221,\n        \"metas\": [\n          {\n            \"id\": 7629,\n            \"external_id\": \"string\",\n            \"key\": \"string\",\n            \"max_allowed_valued\": 2155,\n            \"min_required_values\": 2134,\n            \"position\": \"string\",\n            \"type\": 9435,\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": 562,\n            \"external_id\": \"string\",\n            \"key\": \"string\",\n            \"max_allowed_valued\": 9214,\n            \"min_required_values\": 1226,\n            \"position\": \"string\",\n            \"type\": 3811,\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"labels\": [\n          {\n            \"id\": 1118,\n            \"name\": \"string\",\n            \"is_deleted\": 1\n          },\n          {\n            \"id\": 8581,\n            \"name\": \"string\",\n            \"is_deleted\": 1\n          }\n        ],\n        \"stock_status\": 0\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2888c59b-fbce-4134-ac64-dc42578867e7",
+          "name": "Get product labels",
+          "request": {
+            "name": "Get product labels",
+            "description": {
+              "content": "Get product labels",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "product_labels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<integer>",
+                  "description": "(Required) Product label ids to fetch"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<integer>",
+                  "description": "(Required) Product label ids to fetch"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "1c681f23-fcb4-42c3-aee7-f1741166e017",
+              "name": "Returns labels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product_labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"brands\": [\n      {\n        \"external_id\": 4746,\n        \"name\": \"string\",\n        \"id\": 8643,\n        \"is_deleted\": 0,\n        \"description\": \"string\",\n        \"img\": \"string\",\n        \"created_date\": \"string\"\n      },\n      {\n        \"external_id\": 8362,\n        \"name\": \"string\",\n        \"id\": 2314,\n        \"is_deleted\": 1,\n        \"description\": \"string\",\n        \"img\": \"string\",\n        \"created_date\": \"string\"\n      }\n    ],\n    \"labels\": [\n      {\n        \"id\": 2517,\n        \"is_auto_generated\": 1\n      },\n      {\n        \"id\": 4978,\n        \"is_auto_generated\": 0\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3696ab0-8036-40ea-99c0-01277e594e8d",
+          "name": "Get product categories",
+          "request": {
+            "name": "Get product categories",
+            "description": {
+              "content": "Get product categories",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "product_categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "{\"external_id\":\"<integer>\",\"name\":\"<string>\",\"id\":\"<integer>\",\"is_deleted\":\"<integer>\"}",
+                  "description": "(Required) Category ids to fetch"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "{\"external_id\":\"<integer>\",\"name\":\"<string>\",\"id\":\"<integer>\",\"is_deleted\":\"<integer>\"}",
+                  "description": "(Required) Category ids to fetch"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "a49b2e94-b0ba-45f4-acd7-9e7b8c03c6e2",
+              "name": "Returns categories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "[object Object]"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"categories\": [\n      {\n        \"external_id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"is_deleted\": \"<integer>\"\n      },\n      {\n        \"external_id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"is_deleted\": \"<integer>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bb5eb06-fb16-4394-a5fa-7708a815d561",
+          "name": "Get products from different menus",
+          "request": {
+            "name": "Get products from different menus",
+            "description": {
+              "content": "Get products from different menus",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "menus",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "menu_ids",
+                  "value": "<integer>",
+                  "description": "(Required) Ids for menus that we fetch products from"
+                },
+                {
+                  "disabled": false,
+                  "key": "menu_ids",
+                  "value": "<integer>",
+                  "description": "(Required) Ids for menus that we fetch products from"
+                },
+                {
+                  "disabled": false,
+                  "key": "product_ids",
+                  "value": "<integer>",
+                  "description": "Product ids to fetch"
+                },
+                {
+                  "disabled": false,
+                  "key": "product_ids",
+                  "value": "<integer>",
+                  "description": "Product ids to fetch"
+                },
+                {
+                  "disabled": false,
+                  "key": "stock_status",
+                  "value": "<integer>",
+                  "description": "Whether the products to fetch are in stock or not"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "9e6f8ce5-a9a8-4b10-8e27-ebb44b8bddef",
+              "name": "Returns the specified products for each menu id given",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "menus",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "menu_ids",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "menu_ids",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "product_ids",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "product_ids",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "stock_status",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"ok\",\n  \"data\": {\n    \"menus_products\": {\n      \"menu_id\": 5458,\n      \"products\": [\n        {\n          \"category_id\": 7472,\n          \"comments_enabled\": 0,\n          \"contains_alcohol\": 0,\n          \"description\": \"string\",\n          \"id\": 2589,\n          \"img\": \"string\",\n          \"item_img\": \"string\",\n          \"name\": \"string\",\n          \"price\": 9825.178350424667,\n          \"metas\": [\n            {\n              \"id\": 6284,\n              \"external_id\": \"string\",\n              \"key\": \"string\",\n              \"max_allowed_valued\": 6936,\n              \"min_required_values\": 3603,\n              \"position\": \"string\",\n              \"type\": 8028,\n              \"values\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ]\n            },\n            {\n              \"id\": 5373,\n              \"external_id\": \"string\",\n              \"key\": \"string\",\n              \"max_allowed_valued\": 9801,\n              \"min_required_values\": 5004,\n              \"position\": \"string\",\n              \"type\": 1197,\n              \"values\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ]\n            }\n          ],\n          \"labels\": [\n            {\n              \"id\": 8705,\n              \"name\": \"string\",\n              \"is_deleted\": 1\n            },\n            {\n              \"id\": 9416,\n              \"name\": \"string\",\n              \"is_deleted\": 0\n            }\n          ],\n          \"stock_status\": 1\n        },\n        {\n          \"category_id\": 4160,\n          \"comments_enabled\": 1,\n          \"contains_alcohol\": 0,\n          \"description\": \"string\",\n          \"id\": 6333,\n          \"img\": \"string\",\n          \"item_img\": \"string\",\n          \"name\": \"string\",\n          \"price\": 9569.206366461554,\n          \"metas\": [\n            {\n              \"id\": 6657,\n              \"external_id\": \"string\",\n              \"key\": \"string\",\n              \"max_allowed_valued\": 4095,\n              \"min_required_values\": 6870,\n              \"position\": \"string\",\n              \"type\": 5317,\n              \"values\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ]\n            },\n            {\n              \"id\": 7702,\n              \"external_id\": \"string\",\n              \"key\": \"string\",\n              \"max_allowed_valued\": 4958,\n              \"min_required_values\": 7292,\n              \"position\": \"string\",\n              \"type\": 4172,\n              \"values\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ]\n            }\n          ],\n          \"labels\": [\n            {\n              \"id\": 6421,\n              \"name\": \"string\",\n              \"is_deleted\": 0\n            },\n            {\n              \"id\": 3498,\n              \"name\": \"string\",\n              \"is_deleted\": 1\n            }\n          ],\n          \"stock_status\": 0\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth-staging.2ndkitchen.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "58ad4702-9112-4e23-97fc-4ec1ffb6b9c2",
+    "name": "2ndKitchen - Service Authentication Product API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
