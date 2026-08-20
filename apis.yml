@@ -115,6 +115,8 @@ apis:
   humanURL: https://docs.2ndkitchen.com/
   baseURL: https://auth-staging.2ndkitchen.com
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -151,6 +153,8 @@ apis:
   humanURL: https://docs.2ndkitchen.com/
   baseURL: https://auth-staging.2ndkitchen.com
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -175,6 +179,8 @@ apis:
   humanURL: https://docs.2ndkitchen.com/
   baseURL: https://auth-staging.2ndkitchen.com
   tags:
+  - Restaurant
+  tags_raw:
   - Restaurants
   properties:
   - type: OpenAPI
@@ -187,6 +193,8 @@ apis:
   humanURL: https://docs.2ndkitchen.com/
   baseURL: https://auth-staging.2ndkitchen.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
