@@ -218,6 +218,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/2ndkitchen-capability-edges.yml
+  name: 2ndKitchen Business Capability Map
 - type: DomainSecurity
   url: security/2ndkitchen-domain-security.yml
 - type: Authentication

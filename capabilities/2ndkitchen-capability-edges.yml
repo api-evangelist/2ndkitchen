@@ -1,0 +1,25 @@
+slug: 2ndkitchen
+provider: 2ndKitchen
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Travel & Hospitality
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Coupons
+  spec_file: 2ndkitchen-coupons-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.7
+  evidence: POST /coupons/calc in the 'Pricing Service'
+  reason: Coupon calculation within a pricing service is discount/promotion mechanics. Cross-industry
+    discount management is the honest read; the surface is a single calculation endpoint so confidence
+    is moderate.
