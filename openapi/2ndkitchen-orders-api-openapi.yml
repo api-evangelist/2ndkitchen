@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: 2ndKitchen - Service Authentication Orders API
+  title: 2ndkitchen - Order Service Orders API
   version: '1.0'
 servers:
-- url: https://auth-staging.2ndkitchen.com
+- url: https://orders-staging.2ndkitchen.com
   description: staging
 tags:
 - name: Orders
@@ -123,42 +123,6 @@ paths:
                 $ref: '#/components/schemas/Order'
 components:
   schemas:
-    OrderCartItem:
-      required:
-      - id
-      - quantity
-      - menu_id
-      description: Cart item product information
-      type: object
-      properties:
-        id:
-          description: Product id
-          type: integer
-          example: 12345
-        quantity:
-          description: Product quantity
-          type: integer
-          example: 1
-        menu_id:
-          description: Associated menu id
-          type: integer
-        event_id:
-          deprecated: true
-          description: Associated event id
-          type: integer
-        comments:
-          description: Customer product comments
-          type: string
-          example: Not spicy please
-        delivery_slot:
-          deprecated: true
-          description: user selected pre defined delivery time
-          type: string
-        metas:
-          description: Metadata for products
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderCartItemMeta'
     OrderUser:
       required:
       - name
@@ -209,109 +173,6 @@ components:
           description: Customer State
           type: string
           example: New York
-    OrderCartItemMetaValue:
-      required:
-      - id
-      - name
-      - price
-      type: object
-      properties:
-        id:
-          description: Product metadata value id
-          type: number
-        name:
-          description: Product metadata value name
-          type: string
-          example: Blue Cheese Dressing
-        price:
-          description: Product metadata value price
-          type: number
-          format: float
-          example: '2.2'
-    Product:
-      type: object
-      properties:
-        comments:
-          type: string
-          description: Comments for the product
-        contains_alcohol:
-          type: integer
-          enum:
-          - 0
-          - 1
-          description: Whether alcohol contains alcohol or not
-        event_id:
-          type: integer
-          description: Id for event if product is in event
-        id:
-          type: integer
-          description: Id for product
-        menu_id:
-          type: integer
-          description: Menu id
-        name:
-          type: string
-          description: Product name
-        product_id:
-          type: string
-          description: Product id
-        quantity:
-          type: integer
-          description: Quantity of items
-        subtotal:
-          type: number
-          description: Total price of product
-        rest_id:
-          type: integer
-          description: Restaurant id
-        rest_name:
-          type: string
-          description: Restaurant name
-        meta:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductMeta'
-    OrderPricing:
-      required:
-      - full_price
-      - customer_price
-      - tip
-      type: object
-      properties:
-        full_price:
-          description: Price of the order
-          type: number
-          format: float
-          example: 5.5
-        customer_price:
-          description: Price paid by customer
-          type: number
-          format: float
-          example: 3.2
-        tip:
-          description: Tip for the order
-          type: number
-          format: float
-          example: 1.1
-        delivery_fee:
-          description: Fee for delivery
-          type: number
-          format: float
-        coupon_id:
-          description: Id of the coupon used
-          type: number
-          example: 12345
-        coupon_type:
-          type: integer
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          description: "Coupon Type:\n * `0` - DEFAULT\n * `1` - CREDIT\n * `2` - VOUCHER\n * `3` - REFERRAL\n * `4` - LOYALTY\n * `5` - FIRST_TIME\n * `6` - STAFF\n"
     Order:
       type: object
       properties:
@@ -463,25 +324,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SubOrder'
-    OrderCartItemMeta:
-      required:
-      - id
-      - name
-      - values
-      description: Product metadata
-      type: object
-      properties:
-        id:
-          description: Product metadata id
-          type: number
-        name:
-          description: Product metadata name
-          type: string
-          example: Add Dipping Sauce
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderCartItemMetaValue'
     ProductMeta:
       type: object
       properties:
@@ -503,31 +345,102 @@ components:
         value:
           type: number
           description: Value of product meta
-    OrderTransaction:
+    OrderCartItem:
       required:
-      - payment_method
+      - id
+      - quantity
+      - menu_id
+      description: Cart item product information
       type: object
       properties:
-        token:
-          description: Square payment token
+        id:
+          description: Product id
+          type: integer
+          example: 12345
+        quantity:
+          description: Product quantity
+          type: integer
+          example: 1
+        menu_id:
+          description: Associated menu id
+          type: integer
+        event_id:
+          deprecated: true
+          description: Associated event id
+          type: integer
+        comments:
+          description: Customer product comments
           type: string
-        idempotency_key:
-          description: Square idempotency key
+          example: Not spicy please
+        delivery_slot:
+          deprecated: true
+          description: user selected pre defined delivery time
           type: string
-        payment_method:
+        metas:
+          description: Metadata for products
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderCartItemMeta'
+    OrderPricing:
+      required:
+      - full_price
+      - customer_price
+      - tip
+      type: object
+      properties:
+        full_price:
+          description: Price of the order
+          type: number
+          format: float
+          example: 5.5
+        customer_price:
+          description: Price paid by customer
+          type: number
+          format: float
+          example: 3.2
+        tip:
+          description: Tip for the order
+          type: number
+          format: float
+          example: 1.1
+        delivery_fee:
+          description: Fee for delivery
+          type: number
+          format: float
+        coupon_id:
+          description: Id of the coupon used
+          type: number
+          example: 12345
+        coupon_type:
           type: integer
           enum:
+          - 0
           - 1
           - 2
           - 3
           - 4
           - 5
           - 6
-          description: "Payment Method:\n * `1` - CC\n * `2` - APPLE\n * `3` - GPAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
-        wallet_type:
-          deprecated: true
-          description: Wallet type used
+          description: "Coupon Type:\n * `0` - DEFAULT\n * `1` - CREDIT\n * `2` - VOUCHER\n * `3` - REFERRAL\n * `4` - LOYALTY\n * `5` - FIRST_TIME\n * `6` - STAFF\n"
+    OrderCartItemMeta:
+      required:
+      - id
+      - name
+      - values
+      description: Product metadata
+      type: object
+      properties:
+        id:
+          description: Product metadata id
           type: number
+        name:
+          description: Product metadata name
+          type: string
+          example: Add Dipping Sauce
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderCartItemMetaValue'
     OrderBusiness:
       required:
       - id
@@ -557,6 +470,25 @@ components:
           - 4
           - 5
           description: "Menu Type:\n * `0` - DEFAULT\n * `1` - EVENT\n * `2` - EMBEDDED\n * `3` - DONATION\n * `4` - ECOMMERCE\n * `5` - PRE_PACKAGED\n"
+    OrderCartItemMetaValue:
+      required:
+      - id
+      - name
+      - price
+      type: object
+      properties:
+        id:
+          description: Product metadata value id
+          type: number
+        name:
+          description: Product metadata value name
+          type: string
+          example: Blue Cheese Dressing
+        price:
+          description: Product metadata value price
+          type: number
+          format: float
+          example: '2.2'
     SubOrder:
       type: object
       properties:
@@ -625,3 +557,71 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Product'
+    OrderTransaction:
+      required:
+      - payment_method
+      type: object
+      properties:
+        token:
+          description: Square payment token
+          type: string
+        idempotency_key:
+          description: Square idempotency key
+          type: string
+        payment_method:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          description: "Payment Method:\n * `1` - CC\n * `2` - APPLE\n * `3` - GPAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
+        wallet_type:
+          deprecated: true
+          description: Wallet type used
+          type: number
+    Product:
+      type: object
+      properties:
+        comments:
+          type: string
+          description: Comments for the product
+        contains_alcohol:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: Whether alcohol contains alcohol or not
+        event_id:
+          type: integer
+          description: Id for event if product is in event
+        id:
+          type: integer
+          description: Id for product
+        menu_id:
+          type: integer
+          description: Menu id
+        name:
+          type: string
+          description: Product name
+        product_id:
+          type: string
+          description: Product id
+        quantity:
+          type: integer
+          description: Quantity of items
+        subtotal:
+          type: number
+          description: Total price of product
+        rest_id:
+          type: integer
+          description: Restaurant id
+        rest_name:
+          type: string
+          description: Restaurant name
+        meta:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductMeta'

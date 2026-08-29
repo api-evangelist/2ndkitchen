@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: 2ndKitchen - Service Authentication Product API
+  title: 2ndKitchen - Restaurant Service Product API
   version: '1.0'
 servers:
-- url: https://auth-staging.2ndkitchen.com
+- url: https://restaurant-staging.2ndkitchen.com
   description: staging
 tags:
 - name: Product
@@ -187,6 +187,106 @@ paths:
                               $ref: '#/components/schemas/Product'
 components:
   schemas:
+    ProductMeta:
+      type: object
+      properties:
+        id:
+          type: integer
+        external_id:
+          type: string
+        key:
+          type: string
+        max_allowed_valued:
+          type: integer
+        min_required_values:
+          type: integer
+        position:
+          type: string
+        type:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductMetaValue'
+          description: ''
+    Brand:
+      type: object
+      properties:
+        external_id:
+          type: integer
+        name:
+          type: string
+        id:
+          type: integer
+        is_deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
+        description:
+          type: string
+        img:
+          type: string
+        created_date:
+          type: string
+    MenuProductLabel:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        is_deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
+    ProductCategory:
+      type: object
+      properties:
+        external_id:
+          type: integer
+        name:
+          type: string
+        id:
+          type: integer
+        is_deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
+    ProductMetaValue:
+      type: object
+      properties:
+        cogs:
+          type: number
+        external_id:
+          type: integer
+        id:
+          type: integer
+        meta_id:
+          type: integer
+        name:
+          type: string
+        position:
+          type: string
+        price:
+          type: number
+        stock_status:
+          type: integer
+          enum:
+          - 0
+          - 1
+    ProductLabel:
+      type: object
+      properties:
+        id:
+          type: integer
+        is_auto_generated:
+          type: integer
+          enum:
+          - 0
+          - 1
     Product:
       type: object
       properties:
@@ -239,103 +339,8 @@ components:
           enum:
           - 0
           - 1
-    ProductCategory:
-      type: object
-      properties:
-        external_id:
-          type: integer
-        name:
-          type: string
-        id:
-          type: integer
-        is_deleted:
-          type: integer
-          enum:
-          - 0
-          - 1
-    MenuProductLabel:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        is_deleted:
-          type: integer
-          enum:
-          - 0
-          - 1
-    ProductMeta:
-      type: object
-      properties:
-        id:
-          type: integer
-        external_id:
-          type: string
-        key:
-          type: string
-        max_allowed_valued:
-          type: integer
-        min_required_values:
-          type: integer
-        position:
-          type: string
-        type:
-          type: integer
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductMetaValue'
-          description: ''
-    ProductMetaValue:
-      type: object
-      properties:
-        cogs:
-          type: number
-        external_id:
-          type: integer
-        id:
-          type: integer
-        meta_id:
-          type: integer
-        name:
-          type: string
-        position:
-          type: string
-        price:
-          type: number
-        stock_status:
-          type: integer
-          enum:
-          - 0
-          - 1
-    Brand:
-      type: object
-      properties:
-        external_id:
-          type: integer
-        name:
-          type: string
-        id:
-          type: integer
-        is_deleted:
-          type: integer
-          enum:
-          - 0
-          - 1
-        description:
-          type: string
-        img:
-          type: string
-        created_date:
-          type: string
-    ProductLabel:
-      type: object
-      properties:
-        id:
-          type: integer
-        is_auto_generated:
-          type: integer
-          enum:
-          - 0
-          - 1
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

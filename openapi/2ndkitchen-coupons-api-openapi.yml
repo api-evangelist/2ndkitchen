@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: 2ndKitchen - Service Authentication Coupons API
+  title: 2ndKitchen - Pricing Service Coupons API
   version: '1.0'
 servers:
-- url: https://auth-staging.2ndkitchen.com
+- url: https://pricing-staging.2ndkitchen.com
   description: staging
 tags:
 - name: Coupons

@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: 2ndKitchen - Service Authentication Users API
+  title: 2ndKitchen - User Service Users API
   version: '1.0'
 servers:
-- url: https://auth-staging.2ndkitchen.com
+- url: https://user-staging.2ndkitchen.com
   description: staging
 tags:
 - name: Users
@@ -323,3 +323,8 @@ components:
           - 1
           - 2
           description: "Notification type:\n  * `0` - DAILY_MENU_SMS\n    * `1` - UPCOMING_EVENT_SMS\n"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

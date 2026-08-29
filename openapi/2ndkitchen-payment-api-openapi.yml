@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: 2ndKitchen - Service Authentication Payment API
+  title: 2ndKitchen - Service Payment API
   version: '1.0'
 servers:
-- url: https://auth-staging.2ndkitchen.com
+- url: https://payment-staging.2ndkitchen.com
   description: staging
 tags:
 - name: Payment
@@ -97,3 +97,8 @@ components:
           - 0
           - 1
           description: Whether user payment method is deleted
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

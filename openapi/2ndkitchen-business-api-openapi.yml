@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: 2ndKitchen - Service Authentication Business API
+  title: 2ndKitchen - Service Business API
   version: '1.0'
 servers:
-- url: https://auth-staging.2ndkitchen.com
+- url: https://business-staging.2ndkitchen.com
   description: staging
 tags:
 - name: Business
@@ -45,6 +45,18 @@ paths:
                     $ref: '#/components/schemas/Business'
 components:
   schemas:
+    TipOption:
+      type: object
+      properties:
+        value:
+          type: number
+          description: tip value
+        is_default:
+          type: integer
+          description: is default tip option
+          enum:
+          - 0
+          - 1
     PaymentMethod:
       type: object
       properties:
@@ -61,6 +73,131 @@ components:
           - 5
           - 6
           description: "Payment Method:\n * `1` - CC\n * `2` - APPLE\n * `3` - GPAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
+    OpeningHoursObj:
+      type: object
+      properties:
+        close_time:
+          type: string
+          description: Close time
+          example: 1200
+        open_time:
+          type: string
+          description: Open time
+          example: 600
+        day_of_the_week:
+          type: integer
+          description: Days of the weeks starting Monday (0)
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+    DeliveryMode:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ''
+        delivery_mode:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          description: "Menu Type:\n * `0` - DIRECT_TO_LOCATION\n * `1` - YAY_FOOD_POLE\n * `2` - PICKUP_AREA\n * `3` - DIRECT_TO_CUSTOMER\n * `4` - LAST_YARD_DELIVERY\n"
+        is_default:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+    BusinessMenuProduct:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: product id
+        category_id:
+          type: integer
+          description: category id
+        name:
+          type: string
+          description: product name
+          example: The BBQ Sandwich
+        position:
+          type: integer
+          description: product order position
+        price:
+          type: number
+          description: product price
+          format: float
+    Kiosk:
+      type: object
+      properties:
+        business_id:
+          type: integer
+          description: ''
+        name:
+          type: string
+          description: ''
+        last_seen:
+          type: string
+          description: ''
+        battery_status:
+          type: integer
+          description: ''
+        is_battery_charging:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        is_locked:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        external_id:
+          type: integer
+          description: ''
+        external_name:
+          type: string
+          description: ''
+        make:
+          type: string
+          description: ''
+        os_version:
+          type: string
+          description: ''
+        last_seen_external:
+          type: string
+          description: ''
+        is_active:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        payment_mode:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          description: "Payment Method:\n * `1` - CREDIT_CARD\n * `2` - APPLE_PAY\n * `3` - GOOGLE_PAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
+        is_default:
+          type: boolean
+          description: ''
     Business:
       type: object
       properties:
@@ -246,48 +383,6 @@ components:
         position:
           type: integer
           description: category order position
-    DeliveryMode:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: ''
-        delivery_mode:
-          type: integer
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          description: "Menu Type:\n * `0` - DIRECT_TO_LOCATION\n * `1` - YAY_FOOD_POLE\n * `2` - PICKUP_AREA\n * `3` - DIRECT_TO_CUSTOMER\n * `4` - LAST_YARD_DELIVERY\n"
-        is_default:
-          type: integer
-          description: ''
-          enum:
-          - 0
-          - 1
-    BusinessMenuProduct:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: product id
-        category_id:
-          type: integer
-          description: category id
-        name:
-          type: string
-          description: product name
-          example: The BBQ Sandwich
-        position:
-          type: integer
-          description: product order position
-        price:
-          type: number
-          description: product price
-          format: float
     BusinessMenu:
       type: object
       properties:
@@ -393,98 +488,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DeliveryMode'
-    Kiosk:
-      type: object
-      properties:
-        business_id:
-          type: integer
-          description: ''
-        name:
-          type: string
-          description: ''
-        last_seen:
-          type: string
-          description: ''
-        battery_status:
-          type: integer
-          description: ''
-        is_battery_charging:
-          type: integer
-          description: ''
-          enum:
-          - 0
-          - 1
-        is_locked:
-          type: integer
-          description: ''
-          enum:
-          - 0
-          - 1
-        external_id:
-          type: integer
-          description: ''
-        external_name:
-          type: string
-          description: ''
-        make:
-          type: string
-          description: ''
-        os_version:
-          type: string
-          description: ''
-        last_seen_external:
-          type: string
-          description: ''
-        is_active:
-          type: integer
-          description: ''
-          enum:
-          - 0
-          - 1
-        payment_mode:
-          type: integer
-          enum:
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          description: "Payment Method:\n * `1` - CREDIT_CARD\n * `2` - APPLE_PAY\n * `3` - GOOGLE_PAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
-        is_default:
-          type: boolean
-          description: ''
-    TipOption:
-      type: object
-      properties:
-        value:
-          type: number
-          description: tip value
-        is_default:
-          type: integer
-          description: is default tip option
-          enum:
-          - 0
-          - 1
-    OpeningHoursObj:
-      type: object
-      properties:
-        close_time:
-          type: string
-          description: Close time
-          example: 1200
-        open_time:
-          type: string
-          description: Open time
-          example: 600
-        day_of_the_week:
-          type: integer
-          description: Days of the weeks starting Monday (0)
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: In order to use Bond API, each request must be authenticated with an API key. The API key should be sent with each request in the header section with the header
