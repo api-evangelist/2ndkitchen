@@ -50,6 +50,10 @@ x-acquired-date: '2021-12'
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-17'
+x-docs-platform: swagger-ui
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-17
+x-docs-hosting: aws-cloudfront
 tags:
 - Company
 - Food Technology
@@ -80,6 +84,8 @@ apis:
   humanURL: https://docs.2ndkitchen.com/
   baseURL: https://auth-staging.2ndkitchen.com
   tags:
+  - Brands
+  tags_raw:
   - Brand
   properties:
   - type: OpenAPI
@@ -142,6 +148,8 @@ apis:
   humanURL: https://docs.2ndkitchen.com/
   baseURL: https://auth-staging.2ndkitchen.com
   tags:
+  - Payments
+  tags_raw:
   - Payment
   properties:
   - type: OpenAPI
