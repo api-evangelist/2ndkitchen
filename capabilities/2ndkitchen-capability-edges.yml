@@ -11,8 +11,20 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 1
+edge_count: 2
 edges:
+- tag: Orders
+  spec_file: 2ndkitchen-orders-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.75
+  evidence: POST /orders/create, PUT /orders/{order_id}/status/{status}; schemas Order, SubOrder, OrderCartItem,
+    OrderTransaction
+  reason: Order creation and status progression with cart items, sub-orders and pricing is order capture
+    and fulfilment orchestration. Some ambiguity between sales order and fulfilment, but the status lifecycle
+    points to order fulfilment.
+  recovered_from: vertical-agriculture-food-production-edges.json
 - tag: Coupons
   spec_file: 2ndkitchen-coupons-api-openapi.yml
   capability_id: BC-440.30
