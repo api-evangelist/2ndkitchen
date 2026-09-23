@@ -61,6 +61,10 @@ paths:
                       order_id:
                         type: string
                         example: ROYALOAK-123456
+      summary: Create menus products batch get
+      x-summary-source: derived
+      operationId: postMenusProductsBatchGet
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:

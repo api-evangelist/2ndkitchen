@@ -50,7 +50,8 @@
     "2ndkitchen-restaurantservice.yaml: declared missing tag: Products",
     "2ndkitchen-restaurantservice.yaml: declared missing tag: Restaurant",
     "2ndkitchen-userservice.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "2ndkitchen-userservice.yaml: declared missing tag: Users"
+    "2ndkitchen-userservice.yaml: declared missing tag: Users",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "2ndkitchen-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",

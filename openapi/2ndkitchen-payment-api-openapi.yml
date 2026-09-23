@@ -41,6 +41,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/UserPaymentMethod'
+      summary: Get users by user id payment methods
+      x-summary-source: derived
+      operationId: getUsersByUserIdPaymentMethods
+      x-operation-id-source: derived
 components:
   schemas:
     UserPaymentMethod:

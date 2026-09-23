@@ -51,6 +51,10 @@ paths:
                         description: User refresh token
                         type: string
                         example: kt6kht
+      summary: Create authenticate phone number
+      x-summary-source: derived
+      operationId: postAuthenticatePhoneNumber
+      x-operation-id-source: derived
   /authenticate/google:
     post:
       requestBody:
@@ -97,6 +101,10 @@ paths:
                         description: User refresh token
                         type: string
                         example: kt6kht
+      summary: Create authenticate google
+      x-summary-source: derived
+      operationId: postAuthenticateGoogle
+      x-operation-id-source: derived
   /authenticate/facebook:
     post:
       requestBody:
@@ -140,6 +148,10 @@ paths:
                         description: User refresh token
                         type: string
                         example: kt6kht
+      summary: Create authenticate facebook
+      x-summary-source: derived
+      operationId: postAuthenticateFacebook
+      x-operation-id-source: derived
   /authenticate/phone_number/v2:
     post:
       requestBody:
@@ -187,6 +199,10 @@ paths:
                         description: User refresh token
                         type: string
                         example: kt6kht
+      summary: Create authenticate phone number
+      x-summary-source: derived
+      operationId: postAuthenticatePhoneNumberV2
+      x-operation-id-source: derived
   /verifications/phone_number:
     post:
       requestBody:
@@ -215,3 +231,7 @@ paths:
                   code:
                     type: string
                     example: ok
+      summary: Create verifications phone number
+      x-summary-source: derived
+      operationId: postVerificationsPhoneNumber
+      x-operation-id-source: derived

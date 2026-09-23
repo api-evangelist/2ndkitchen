@@ -83,6 +83,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/RestaurantRecommendation'
+      summary: Create recommend restaurants
+      x-summary-source: derived
+      operationId: postRecommendRestaurants
+      x-operation-id-source: derived
 components:
   schemas:
     Restaurant:

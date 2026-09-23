@@ -43,6 +43,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Brand'
+      summary: Get brands
+      x-summary-source: derived
+      operationId: getBrands
+      x-operation-id-source: derived
 components:
   schemas:
     Brand:

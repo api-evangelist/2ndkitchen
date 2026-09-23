@@ -51,6 +51,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Product'
+      summary: Get menus by menu id products
+      x-summary-source: derived
+      operationId: getMenusByMenuIdProducts
+      x-operation-id-source: derived
   /product_labels:
     parameters:
     - in: query
@@ -65,7 +69,6 @@ paths:
     get:
       security:
       - bearerAuth: []
-      description: Get product labels
       tags:
       - Product
       responses:
@@ -90,6 +93,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/ProductLabel'
+      summary: Get product labels
+      x-summary-source: derived
+      operationId: getProductLabels
+      x-operation-id-source: derived
   /product_categories:
     parameters:
     - in: query
@@ -104,7 +111,6 @@ paths:
     get:
       security:
       - bearerAuth: []
-      description: Get product categories
       tags:
       - Product
       responses:
@@ -125,6 +131,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/ProductCategory'
+      summary: Get product categories
+      x-summary-source: derived
+      operationId: getProductCategories
+      x-operation-id-source: derived
   /menus/products:
     parameters:
     - in: query
@@ -185,8 +195,26 @@ paths:
                             type: array
                             items:
                               $ref: '#/components/schemas/Product'
+      summary: Get menus products
+      x-summary-source: derived
+      operationId: getMenusProducts
+      x-operation-id-source: derived
 components:
   schemas:
+    ProductCategory:
+      type: object
+      properties:
+        external_id:
+          type: integer
+        name:
+          type: string
+        id:
+          type: integer
+        is_deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
     ProductMeta:
       type: object
       properties:
@@ -229,64 +257,6 @@ components:
           type: string
         created_date:
           type: string
-    MenuProductLabel:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        is_deleted:
-          type: integer
-          enum:
-          - 0
-          - 1
-    ProductCategory:
-      type: object
-      properties:
-        external_id:
-          type: integer
-        name:
-          type: string
-        id:
-          type: integer
-        is_deleted:
-          type: integer
-          enum:
-          - 0
-          - 1
-    ProductMetaValue:
-      type: object
-      properties:
-        cogs:
-          type: number
-        external_id:
-          type: integer
-        id:
-          type: integer
-        meta_id:
-          type: integer
-        name:
-          type: string
-        position:
-          type: string
-        price:
-          type: number
-        stock_status:
-          type: integer
-          enum:
-          - 0
-          - 1
-    ProductLabel:
-      type: object
-      properties:
-        id:
-          type: integer
-        is_auto_generated:
-          type: integer
-          enum:
-          - 0
-          - 1
     Product:
       type: object
       properties:
@@ -336,6 +306,50 @@ components:
         stock_status:
           type: integer
           description: is product available?
+          enum:
+          - 0
+          - 1
+    MenuProductLabel:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        is_deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
+    ProductLabel:
+      type: object
+      properties:
+        id:
+          type: integer
+        is_auto_generated:
+          type: integer
+          enum:
+          - 0
+          - 1
+    ProductMetaValue:
+      type: object
+      properties:
+        cogs:
+          type: number
+        external_id:
+          type: integer
+        id:
+          type: integer
+        meta_id:
+          type: integer
+        name:
+          type: string
+        position:
+          type: string
+        price:
+          type: number
+        stock_status:
+          type: integer
           enum:
           - 0
           - 1

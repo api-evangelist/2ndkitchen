@@ -43,3 +43,7 @@ paths:
                         type: string
                         description: ETA for the dropoff date for the delivery
                         example: '2022-01-31 13:22:12.926828'
+      summary: Get deliveries by delivery id job
+      x-summary-source: derived
+      operationId: getDeliveriesByDeliveryIdJob
+      x-operation-id-source: derived

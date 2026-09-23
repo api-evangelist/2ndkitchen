@@ -33,30 +33,12 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Restaurant'
+      summary: Get restaurants
+      x-summary-source: derived
+      operationId: getRestaurants
+      x-operation-id-source: derived
 components:
   schemas:
-    OpeningHoursObj:
-      type: object
-      properties:
-        close_time:
-          type: string
-          description: Close time (utc)
-          example: 1200
-        open_time:
-          type: string
-          description: Open time (utc)
-          example: 600
-        day_of_the_week:
-          type: integer
-          description: Days of the weeks starting Monday (0)
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
     Restaurant:
       type: object
       properties:
@@ -230,6 +212,28 @@ components:
         created_date:
           type: string
           description: ''
+    OpeningHoursObj:
+      type: object
+      properties:
+        close_time:
+          type: string
+          description: Close time (utc)
+          example: 1200
+        open_time:
+          type: string
+          description: Open time (utc)
+          example: 600
+        day_of_the_week:
+          type: integer
+          description: Days of the weeks starting Monday (0)
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
   securitySchemes:
     bearerAuth:
       type: http

@@ -90,3 +90,7 @@ paths:
                         - 0
                         - 1
                         description: "Discount Type:\n * `0` - FIXED\n * `1` - PERCENT\n"
+      summary: Create coupons calc
+      x-summary-source: derived
+      operationId: postCouponsCalc
+      x-operation-id-source: derived

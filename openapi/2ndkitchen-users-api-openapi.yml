@@ -42,6 +42,10 @@ paths:
                     description: User does not exist error
                     type: string
                     example: User does not exist
+      summary: Get user me
+      x-summary-source: derived
+      operationId: getUserMe
+      x-operation-id-source: derived
   /users/{user_id}/verify/v2:
     parameters:
     - in: path
@@ -95,6 +99,10 @@ paths:
                     description: User not found error
                     type: string
                     example: User not found
+      summary: Create users by user id verify
+      x-summary-source: derived
+      operationId: postUsersByUserIdVerifyV2
+      x-operation-id-source: derived
   /users/{user_id}/verify_verification_code:
     parameters:
     - in: path
@@ -153,6 +161,10 @@ paths:
                     description: User already verified error
                     type: string
                     example: User already verified
+      summary: Create users by user id verify verification code
+      x-summary-source: derived
+      operationId: postUsersByUserIdVerifyVerificationCode
+      x-operation-id-source: derived
   /users/{user_id}/activate:
     parameters:
     - in: path
@@ -227,6 +239,10 @@ paths:
                     description: User alright active error
                     type: string
                     example: User is already active!
+      summary: Create users by user id activate
+      x-summary-source: derived
+      operationId: postUsersByUserIdActivate
+      x-operation-id-source: derived
 components:
   schemas:
     User:
