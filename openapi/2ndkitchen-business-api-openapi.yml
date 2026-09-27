@@ -49,83 +49,20 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    BusinessMenu:
+    OpeningHoursObj:
       type: object
       properties:
-        courier_id:
-          type: integer
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          description: "Courier Type:\n * `0` - WALKING\n * `1` - TWIN_JET\n * `2` - EATING_IN\n * `4` - TOOKAN\n * `5` - POSTMATES\n * `6` - DOORDASH\n * `7` - SKIPCART\n * `8` - REEF\n * `9` - RELAY\n"
-        delivery_fee:
-          type: number
-          description: ''
-        delivery_mode:
-          type: integer
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          description: "Menu Type:\n * `0` - DIRECT_TO_LOCATION\n * `1` - YAY_FOOD_POLE\n * `2` - PICKUP_AREA\n * `3` - DIRECT_TO_CUSTOMER\n * `4` - LAST_YARD_DELIVERY\n"
-        delivery_range:
+        close_time:
           type: string
-          description: ''
-        event_id:
-          type: integer
-          description: ''
-        id:
-          type: integer
-          description: ''
-        is_backup:
-          type: integer
-          description: ''
-          enum:
-          - 0
-          - 1
-        is_late_night:
-          type: integer
-          description: ''
-          enum:
-          - 0
-          - 1
-        min_order_amount:
-          type: number
-          description: ''
-        name:
+          description: Close time
+          example: 1200
+        open_time:
           type: string
-          description: ''
-        pre_order_allowed:
+          description: Open time
+          example: 600
+        day_of_the_week:
           type: integer
-          description: ''
-          enum:
-          - 0
-          - 1
-        restaurant_commission:
-          type: number
-          description: ''
-        restaurant_id:
-          type: integer
-          description: ''
-        stock_status:
-          type: integer
-          description: ''
-          enum:
-          - 0
-          - 1
-        stock_status_override:
-          type: boolean
-          description: ''
-        theme_id:
-          type: integer
-          description: ''
-        type:
-          type: integer
+          description: Days of the weeks starting Monday (0)
           enum:
           - 0
           - 1
@@ -133,49 +70,7 @@ components:
           - 3
           - 4
           - 5
-          description: "Menu Type:\n * `0` - DEFAULT\n * `1` - EVENT\n * `2` - EMBEDDED\n * `3` - DONATION\n * `4` - ECOMMERCE\n * `5` - PRE_PACKAGED\n"
-        opening_hours:
-          type: array
-          items:
-            $ref: '#/components/schemas/OpeningHoursObj'
-        products:
-          type: array
-          items:
-            $ref: '#/components/schemas/BusinessMenuProduct'
-        products_categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/BusinessMenuProductCategory'
-        payment_methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/PaymentMethod'
-        delivery_modes:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryMode'
-    DeliveryMode:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: ''
-        delivery_mode:
-          type: integer
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          description: "Menu Type:\n * `0` - DIRECT_TO_LOCATION\n * `1` - YAY_FOOD_POLE\n * `2` - PICKUP_AREA\n * `3` - DIRECT_TO_CUSTOMER\n * `4` - LAST_YARD_DELIVERY\n"
-        is_default:
-          type: integer
-          description: ''
-          enum:
-          - 0
-          - 1
+          - 6
     Business:
       type: object
       properties:
@@ -349,40 +244,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TipOption'
-    TipOption:
+    BusinessMenuProductCategory:
       type: object
       properties:
-        value:
-          type: number
-          description: tip value
-        is_default:
+        category_id:
           type: integer
-          description: is default tip option
-          enum:
-          - 0
-          - 1
-    OpeningHoursObj:
-      type: object
-      properties:
-        close_time:
+          description: category id
+        name:
           type: string
-          description: Close time
-          example: 1200
-        open_time:
-          type: string
-          description: Open time
-          example: 600
-        day_of_the_week:
+          description: category name
+        position:
           type: integer
-          description: Days of the weeks starting Monday (0)
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
+          description: category order position
     Kiosk:
       type: object
       properties:
@@ -444,34 +317,6 @@ components:
         is_default:
           type: boolean
           description: ''
-    PaymentMethod:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: ''
-        type:
-          type: integer
-          enum:
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          description: "Payment Method:\n * `1` - CC\n * `2` - APPLE\n * `3` - GPAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
-    BusinessMenuProductCategory:
-      type: object
-      properties:
-        category_id:
-          type: integer
-          description: category id
-        name:
-          type: string
-          description: category name
-        position:
-          type: integer
-          description: category order position
     BusinessMenuProduct:
       type: object
       properties:
@@ -492,6 +337,161 @@ components:
           type: number
           description: product price
           format: float
+    DeliveryMode:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ''
+        delivery_mode:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          description: "Menu Type:\n * `0` - DIRECT_TO_LOCATION\n * `1` - YAY_FOOD_POLE\n * `2` - PICKUP_AREA\n * `3` - DIRECT_TO_CUSTOMER\n * `4` - LAST_YARD_DELIVERY\n"
+        is_default:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+    TipOption:
+      type: object
+      properties:
+        value:
+          type: number
+          description: tip value
+        is_default:
+          type: integer
+          description: is default tip option
+          enum:
+          - 0
+          - 1
+    PaymentMethod:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ''
+        type:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          description: "Payment Method:\n * `1` - CC\n * `2` - APPLE\n * `3` - GPAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
+    BusinessMenu:
+      type: object
+      properties:
+        courier_id:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          description: "Courier Type:\n * `0` - WALKING\n * `1` - TWIN_JET\n * `2` - EATING_IN\n * `4` - TOOKAN\n * `5` - POSTMATES\n * `6` - DOORDASH\n * `7` - SKIPCART\n * `8` - REEF\n * `9` - RELAY\n"
+        delivery_fee:
+          type: number
+          description: ''
+        delivery_mode:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          description: "Menu Type:\n * `0` - DIRECT_TO_LOCATION\n * `1` - YAY_FOOD_POLE\n * `2` - PICKUP_AREA\n * `3` - DIRECT_TO_CUSTOMER\n * `4` - LAST_YARD_DELIVERY\n"
+        delivery_range:
+          type: string
+          description: ''
+        event_id:
+          type: integer
+          description: ''
+        id:
+          type: integer
+          description: ''
+        is_backup:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        is_late_night:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        min_order_amount:
+          type: number
+          description: ''
+        name:
+          type: string
+          description: ''
+        pre_order_allowed:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        restaurant_commission:
+          type: number
+          description: ''
+        restaurant_id:
+          type: integer
+          description: ''
+        stock_status:
+          type: integer
+          description: ''
+          enum:
+          - 0
+          - 1
+        stock_status_override:
+          type: boolean
+          description: ''
+        theme_id:
+          type: integer
+          description: ''
+        type:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          description: "Menu Type:\n * `0` - DEFAULT\n * `1` - EVENT\n * `2` - EMBEDDED\n * `3` - DONATION\n * `4` - ECOMMERCE\n * `5` - PRE_PACKAGED\n"
+        opening_hours:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpeningHoursObj'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessMenuProduct'
+        products_categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessMenuProductCategory'
+        payment_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentMethod'
+        delivery_modes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryMode'
   securitySchemes:
     bearerAuth:
       type: http

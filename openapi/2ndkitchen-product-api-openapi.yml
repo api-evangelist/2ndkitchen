@@ -201,42 +201,18 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ProductCategory:
+    MenuProductLabel:
       type: object
       properties:
-        external_id:
+        id:
           type: integer
         name:
           type: string
-        id:
-          type: integer
         is_deleted:
           type: integer
           enum:
           - 0
           - 1
-    ProductMeta:
-      type: object
-      properties:
-        id:
-          type: integer
-        external_id:
-          type: string
-        key:
-          type: string
-        max_allowed_valued:
-          type: integer
-        min_required_values:
-          type: integer
-        position:
-          type: string
-        type:
-          type: integer
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductMetaValue'
-          description: ''
     Brand:
       type: object
       properties:
@@ -257,6 +233,52 @@ components:
           type: string
         created_date:
           type: string
+    ProductCategory:
+      type: object
+      properties:
+        external_id:
+          type: integer
+        name:
+          type: string
+        id:
+          type: integer
+        is_deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
+    ProductLabel:
+      type: object
+      properties:
+        id:
+          type: integer
+        is_auto_generated:
+          type: integer
+          enum:
+          - 0
+          - 1
+    ProductMetaValue:
+      type: object
+      properties:
+        cogs:
+          type: number
+        external_id:
+          type: integer
+        id:
+          type: integer
+        meta_id:
+          type: integer
+        name:
+          type: string
+        position:
+          type: string
+        price:
+          type: number
+        stock_status:
+          type: integer
+          enum:
+          - 0
+          - 1
     Product:
       type: object
       properties:
@@ -309,50 +331,28 @@ components:
           enum:
           - 0
           - 1
-    MenuProductLabel:
+    ProductMeta:
       type: object
       properties:
         id:
           type: integer
-        name:
-          type: string
-        is_deleted:
-          type: integer
-          enum:
-          - 0
-          - 1
-    ProductLabel:
-      type: object
-      properties:
-        id:
-          type: integer
-        is_auto_generated:
-          type: integer
-          enum:
-          - 0
-          - 1
-    ProductMetaValue:
-      type: object
-      properties:
-        cogs:
-          type: number
         external_id:
-          type: integer
-        id:
-          type: integer
-        meta_id:
-          type: integer
-        name:
           type: string
+        key:
+          type: string
+        max_allowed_valued:
+          type: integer
+        min_required_values:
+          type: integer
         position:
           type: string
-        price:
-          type: number
-        stock_status:
+        type:
           type: integer
-          enum:
-          - 0
-          - 1
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductMetaValue'
+          description: ''
   securitySchemes:
     bearerAuth:
       type: http

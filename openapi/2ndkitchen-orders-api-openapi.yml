@@ -135,6 +135,42 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    OrderCartItem:
+      required:
+      - id
+      - quantity
+      - menu_id
+      description: Cart item product information
+      type: object
+      properties:
+        id:
+          description: Product id
+          type: integer
+          example: 12345
+        quantity:
+          description: Product quantity
+          type: integer
+          example: 1
+        menu_id:
+          description: Associated menu id
+          type: integer
+        event_id:
+          deprecated: true
+          description: Associated event id
+          type: integer
+        comments:
+          description: Customer product comments
+          type: string
+          example: Not spicy please
+        delivery_slot:
+          deprecated: true
+          description: user selected pre defined delivery time
+          type: string
+        metas:
+          description: Metadata for products
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderCartItemMeta'
     ProductMeta:
       type: object
       properties:
@@ -156,6 +192,75 @@ components:
         value:
           type: number
           description: Value of product meta
+    OrderCartItemMetaValue:
+      required:
+      - id
+      - name
+      - price
+      type: object
+      properties:
+        id:
+          description: Product metadata value id
+          type: number
+        name:
+          description: Product metadata value name
+          type: string
+          example: Blue Cheese Dressing
+        price:
+          description: Product metadata value price
+          type: number
+          format: float
+          example: '2.2'
+    OrderUser:
+      required:
+      - name
+      - phone
+      type: object
+      properties:
+        name:
+          description: Customer name
+          type: string
+          example: John Doe
+        email:
+          description: Customer email
+          type: string
+          example: johndoe@gmail.com
+        phone:
+          description: Customer phone number
+          type: string
+          example: '+13211231223'
+        location:
+          deprecated: true
+          description: Customer location (table number, room number)
+          type: string
+        user_id:
+          description: Authenticatd user id
+          type: integer
+          example: 12345
+        address:
+          description: Customer street name and number
+          type: string
+          example: 380 Webster Ave
+        address_line_2:
+          description: Customer Apt number
+          type: string
+          example: 2A
+        zip:
+          description: Customer Postal code
+          type: string
+          example: '12345'
+        city:
+          description: Customer City
+          type: string
+          example: New York
+        country:
+          description: Customer country
+          type: string
+          example: US
+        state:
+          description: Customer State
+          type: string
+          example: New York
     SubOrder:
       type: object
       properties:
@@ -224,140 +329,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Product'
-    OrderCartItemMeta:
-      required:
-      - id
-      - name
-      - values
-      description: Product metadata
-      type: object
-      properties:
-        id:
-          description: Product metadata id
-          type: number
-        name:
-          description: Product metadata name
-          type: string
-          example: Add Dipping Sauce
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderCartItemMetaValue'
-    OrderCartItem:
-      required:
-      - id
-      - quantity
-      - menu_id
-      description: Cart item product information
-      type: object
-      properties:
-        id:
-          description: Product id
-          type: integer
-          example: 12345
-        quantity:
-          description: Product quantity
-          type: integer
-          example: 1
-        menu_id:
-          description: Associated menu id
-          type: integer
-        event_id:
-          deprecated: true
-          description: Associated event id
-          type: integer
-        comments:
-          description: Customer product comments
-          type: string
-          example: Not spicy please
-        delivery_slot:
-          deprecated: true
-          description: user selected pre defined delivery time
-          type: string
-        metas:
-          description: Metadata for products
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderCartItemMeta'
-    OrderUser:
-      required:
-      - name
-      - phone
-      type: object
-      properties:
-        name:
-          description: Customer name
-          type: string
-          example: John Doe
-        email:
-          description: Customer email
-          type: string
-          example: johndoe@gmail.com
-        phone:
-          description: Customer phone number
-          type: string
-          example: '+13211231223'
-        location:
-          deprecated: true
-          description: Customer location (table number, room number)
-          type: string
-        user_id:
-          description: Authenticatd user id
-          type: integer
-          example: 12345
-        address:
-          description: Customer street name and number
-          type: string
-          example: 380 Webster Ave
-        address_line_2:
-          description: Customer Apt number
-          type: string
-          example: 2A
-        zip:
-          description: Customer Postal code
-          type: string
-          example: '12345'
-        city:
-          description: Customer City
-          type: string
-          example: New York
-        country:
-          description: Customer country
-          type: string
-          example: US
-        state:
-          description: Customer State
-          type: string
-          example: New York
-    OrderBusiness:
-      required:
-      - id
-      type: object
-      properties:
-        id:
-          description: id for business
-          type: integer
-          example: 8
-        delivery_mode:
-          type: integer
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          description: "Menu Type:\n * `0` - DIRECT_TO_LOCATION\n * `1` - YAY_FOOD_POLE\n * `2` - PICKUP_AREA\n * `3` - DIRECT_TO_CUSTOMER\n * `4` - LAST_YARD_DELIVERY\n"
-        menu_type:
-          type: integer
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          description: "Menu Type:\n * `0` - DEFAULT\n * `1` - EVENT\n * `2` - EMBEDDED\n * `3` - DONATION\n * `4` - ECOMMERCE\n * `5` - PRE_PACKAGED\n"
     Order:
       type: object
       properties:
@@ -509,6 +480,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SubOrder'
+    OrderCartItemMeta:
+      required:
+      - id
+      - name
+      - values
+      description: Product metadata
+      type: object
+      properties:
+        id:
+          description: Product metadata id
+          type: number
+        name:
+          description: Product metadata name
+          type: string
+          example: Add Dipping Sauce
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderCartItemMetaValue'
     Product:
       type: object
       properties:
@@ -552,50 +542,35 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ProductMeta'
-    OrderCartItemMetaValue:
+    OrderBusiness:
       required:
       - id
-      - name
-      - price
       type: object
       properties:
         id:
-          description: Product metadata value id
-          type: number
-        name:
-          description: Product metadata value name
-          type: string
-          example: Blue Cheese Dressing
-        price:
-          description: Product metadata value price
-          type: number
-          format: float
-          example: '2.2'
-    OrderTransaction:
-      required:
-      - payment_method
-      type: object
-      properties:
-        token:
-          description: Square payment token
-          type: string
-        idempotency_key:
-          description: Square idempotency key
-          type: string
-        payment_method:
+          description: id for business
+          type: integer
+          example: 8
+        delivery_mode:
           type: integer
           enum:
+          - 0
           - 1
           - 2
           - 3
           - 4
           - 5
-          - 6
-          description: "Payment Method:\n * `1` - CC\n * `2` - APPLE\n * `3` - GPAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
-        wallet_type:
-          deprecated: true
-          description: Wallet type used
-          type: number
+          description: "Menu Type:\n * `0` - DIRECT_TO_LOCATION\n * `1` - YAY_FOOD_POLE\n * `2` - PICKUP_AREA\n * `3` - DIRECT_TO_CUSTOMER\n * `4` - LAST_YARD_DELIVERY\n"
+        menu_type:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          description: "Menu Type:\n * `0` - DEFAULT\n * `1` - EVENT\n * `2` - EMBEDDED\n * `3` - DONATION\n * `4` - ECOMMERCE\n * `5` - PRE_PACKAGED\n"
     OrderPricing:
       required:
       - full_price
@@ -637,3 +612,28 @@ components:
           - 5
           - 6
           description: "Coupon Type:\n * `0` - DEFAULT\n * `1` - CREDIT\n * `2` - VOUCHER\n * `3` - REFERRAL\n * `4` - LOYALTY\n * `5` - FIRST_TIME\n * `6` - STAFF\n"
+    OrderTransaction:
+      required:
+      - payment_method
+      type: object
+      properties:
+        token:
+          description: Square payment token
+          type: string
+        idempotency_key:
+          description: Square idempotency key
+          type: string
+        payment_method:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          description: "Payment Method:\n * `1` - CC\n * `2` - APPLE\n * `3` - GPAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
+        wallet_type:
+          deprecated: true
+          description: Wallet type used
+          type: number
