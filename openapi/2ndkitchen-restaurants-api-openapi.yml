@@ -89,6 +89,25 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    RestaurantRecommendation:
+      type: object
+      properties:
+        distance:
+          description: Distance from location
+          type: number
+        restaurant:
+          description: Restaurant data
+          type: object
+          $ref: '#/components/schemas/Restaurant'
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          description: Restaurant location latitude
+          type: number
+        longitude:
+          description: Restaurant location longitude
+          type: number
     Restaurant:
       description: Restaurant that is recommended for the user
       type: object
@@ -171,22 +190,3 @@ components:
         coordinates:
           type: object
           $ref: '#/components/schemas/Coordinates'
-    RestaurantRecommendation:
-      type: object
-      properties:
-        distance:
-          description: Distance from location
-          type: number
-        restaurant:
-          description: Restaurant data
-          type: object
-          $ref: '#/components/schemas/Restaurant'
-    Coordinates:
-      type: object
-      properties:
-        latitude:
-          description: Restaurant location latitude
-          type: number
-        longitude:
-          description: Restaurant location longitude
-          type: number

@@ -39,6 +39,39 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    OpeningHoursException:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ''
+        restaurant_id:
+          type: integer
+          description: ''
+        start_date:
+          type: string
+          description: ''
+        end_date:
+          type: string
+          description: ''
+        open_time:
+          type: string
+          description: ''
+        close_time:
+          type: string
+          description: ''
+        is_open:
+          type: boolean
+          description: ''
+          enum:
+          - 0
+          - 1
+        title:
+          type: string
+          description: ''
+        created_date:
+          type: string
+          description: ''
     Restaurant:
       type: object
       properties:
@@ -201,39 +234,6 @@ components:
           - 4
           - 5
           - 6
-    OpeningHoursException:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: ''
-        restaurant_id:
-          type: integer
-          description: ''
-        start_date:
-          type: string
-          description: ''
-        end_date:
-          type: string
-          description: ''
-        open_time:
-          type: string
-          description: ''
-        close_time:
-          type: string
-          description: ''
-        is_open:
-          type: boolean
-          description: ''
-          enum:
-          - 0
-          - 1
-        title:
-          type: string
-          description: ''
-        created_date:
-          type: string
-          description: ''
   securitySchemes:
     bearerAuth:
       type: http
