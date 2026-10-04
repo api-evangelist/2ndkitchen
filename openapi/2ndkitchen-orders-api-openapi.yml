@@ -286,47 +286,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SubOrder'
-    OrderPricing:
-      required:
-      - full_price
-      - customer_price
-      - tip
-      type: object
-      properties:
-        full_price:
-          description: Price of the order
-          type: number
-          format: float
-          example: 5.5
-        customer_price:
-          description: Price paid by customer
-          type: number
-          format: float
-          example: 3.2
-        tip:
-          description: Tip for the order
-          type: number
-          format: float
-          example: 1.1
-        delivery_fee:
-          description: Fee for delivery
-          type: number
-          format: float
-        coupon_id:
-          description: Id of the coupon used
-          type: number
-          example: 12345
-        coupon_type:
-          type: integer
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          description: "Coupon Type:\n * `0` - DEFAULT\n * `1` - CREDIT\n * `2` - VOUCHER\n * `3` - REFERRAL\n * `4` - LOYALTY\n * `5` - FIRST_TIME\n * `6` - STAFF\n"
     OrderCartItemMeta:
       required:
       - id
@@ -346,63 +305,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OrderCartItemMetaValue'
-    ProductMeta:
-      type: object
-      properties:
-        key:
-          type: integer
-          description: 'Meta key '
-        label:
-          type: string
-          description: Label for product
-        meta_id:
-          type: integer
-          description: Id for meta
-        meta_val_id:
-          type: integer
-          description: Id for Meta value
-        price:
-          type: number
-          description: Price of product meta
-        value:
-          type: number
-          description: Value of product meta
-    OrderCartItem:
-      required:
-      - id
-      - quantity
-      - menu_id
-      description: Cart item product information
-      type: object
-      properties:
-        id:
-          description: Product id
-          type: integer
-          example: 12345
-        quantity:
-          description: Product quantity
-          type: integer
-          example: 1
-        menu_id:
-          description: Associated menu id
-          type: integer
-        event_id:
-          deprecated: true
-          description: Associated event id
-          type: integer
-        comments:
-          description: Customer product comments
-          type: string
-          example: Not spicy please
-        delivery_slot:
-          deprecated: true
-          description: user selected pre defined delivery time
-          type: string
-        metas:
-          description: Metadata for products
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderCartItemMeta'
     SubOrder:
       type: object
       properties:
@@ -514,31 +416,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ProductMeta'
-    OrderTransaction:
-      required:
-      - payment_method
-      type: object
-      properties:
-        token:
-          description: Square payment token
-          type: string
-        idempotency_key:
-          description: Square idempotency key
-          type: string
-        payment_method:
-          type: integer
-          enum:
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          description: "Payment Method:\n * `1` - CC\n * `2` - APPLE\n * `3` - GPAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
-        wallet_type:
-          deprecated: true
-          description: Wallet type used
-          type: number
     OrderBusiness:
       required:
       - id
@@ -568,6 +445,63 @@ components:
           - 4
           - 5
           description: "Menu Type:\n * `0` - DEFAULT\n * `1` - EVENT\n * `2` - EMBEDDED\n * `3` - DONATION\n * `4` - ECOMMERCE\n * `5` - PRE_PACKAGED\n"
+    OrderCartItem:
+      required:
+      - id
+      - quantity
+      - menu_id
+      description: Cart item product information
+      type: object
+      properties:
+        id:
+          description: Product id
+          type: integer
+          example: 12345
+        quantity:
+          description: Product quantity
+          type: integer
+          example: 1
+        menu_id:
+          description: Associated menu id
+          type: integer
+        event_id:
+          deprecated: true
+          description: Associated event id
+          type: integer
+        comments:
+          description: Customer product comments
+          type: string
+          example: Not spicy please
+        delivery_slot:
+          deprecated: true
+          description: user selected pre defined delivery time
+          type: string
+        metas:
+          description: Metadata for products
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderCartItemMeta'
+    ProductMeta:
+      type: object
+      properties:
+        key:
+          type: integer
+          description: 'Meta key '
+        label:
+          type: string
+          description: Label for product
+        meta_id:
+          type: integer
+          description: Id for meta
+        meta_val_id:
+          type: integer
+          description: Id for Meta value
+        price:
+          type: number
+          description: Price of product meta
+        value:
+          type: number
+          description: Value of product meta
     OrderCartItemMetaValue:
       required:
       - id
@@ -637,3 +571,69 @@ components:
           description: Customer State
           type: string
           example: New York
+    OrderTransaction:
+      required:
+      - payment_method
+      type: object
+      properties:
+        token:
+          description: Square payment token
+          type: string
+        idempotency_key:
+          description: Square idempotency key
+          type: string
+        payment_method:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          description: "Payment Method:\n * `1` - CC\n * `2` - APPLE\n * `3` - GPAY\n * `4` - CASH\n * `5` - BUSINESS_BILLING\n * `6` - DIRECT_TO_BILL\n"
+        wallet_type:
+          deprecated: true
+          description: Wallet type used
+          type: number
+    OrderPricing:
+      required:
+      - full_price
+      - customer_price
+      - tip
+      type: object
+      properties:
+        full_price:
+          description: Price of the order
+          type: number
+          format: float
+          example: 5.5
+        customer_price:
+          description: Price paid by customer
+          type: number
+          format: float
+          example: 3.2
+        tip:
+          description: Tip for the order
+          type: number
+          format: float
+          example: 1.1
+        delivery_fee:
+          description: Fee for delivery
+          type: number
+          format: float
+        coupon_id:
+          description: Id of the coupon used
+          type: number
+          example: 12345
+        coupon_type:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          description: "Coupon Type:\n * `0` - DEFAULT\n * `1` - CREDIT\n * `2` - VOUCHER\n * `3` - REFERRAL\n * `4` - LOYALTY\n * `5` - FIRST_TIME\n * `6` - STAFF\n"

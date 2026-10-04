@@ -39,39 +39,28 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    OpeningHoursException:
+    OpeningHoursObj:
       type: object
       properties:
-        id:
-          type: integer
-          description: ''
-        restaurant_id:
-          type: integer
-          description: ''
-        start_date:
-          type: string
-          description: ''
-        end_date:
-          type: string
-          description: ''
-        open_time:
-          type: string
-          description: ''
         close_time:
           type: string
-          description: ''
-        is_open:
-          type: boolean
-          description: ''
+          description: Close time (utc)
+          example: 1200
+        open_time:
+          type: string
+          description: Open time (utc)
+          example: 600
+        day_of_the_week:
+          type: integer
+          description: Days of the weeks starting Monday (0)
           enum:
           - 0
           - 1
-        title:
-          type: string
-          description: ''
-        created_date:
-          type: string
-          description: ''
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
     Restaurant:
       type: object
       properties:
@@ -212,28 +201,39 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OpeningHoursException'
-    OpeningHoursObj:
+    OpeningHoursException:
       type: object
       properties:
-        close_time:
+        id:
+          type: integer
+          description: ''
+        restaurant_id:
+          type: integer
+          description: ''
+        start_date:
           type: string
-          description: Close time (utc)
-          example: 1200
+          description: ''
+        end_date:
+          type: string
+          description: ''
         open_time:
           type: string
-          description: Open time (utc)
-          example: 600
-        day_of_the_week:
-          type: integer
-          description: Days of the weeks starting Monday (0)
+          description: ''
+        close_time:
+          type: string
+          description: ''
+        is_open:
+          type: boolean
+          description: ''
           enum:
           - 0
           - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
+        title:
+          type: string
+          description: ''
+        created_date:
+          type: string
+          description: ''
   securitySchemes:
     bearerAuth:
       type: http

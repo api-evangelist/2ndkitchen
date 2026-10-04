@@ -245,6 +245,21 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    UserNotification:
+      type: object
+      properties:
+        id:
+          description: Notification id
+          type: integer
+        user_id:
+          description: User id
+          type: integer
+        type:
+          type: integer
+          enum:
+          - 1
+          - 2
+          description: "Notification type:\n  * `0` - DAILY_MENU_SMS\n    * `1` - UPCOMING_EVENT_SMS\n"
     User:
       type: object
       properties:
@@ -324,21 +339,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserNotification'
-    UserNotification:
-      type: object
-      properties:
-        id:
-          description: Notification id
-          type: integer
-        user_id:
-          description: User id
-          type: integer
-        type:
-          type: integer
-          enum:
-          - 1
-          - 2
-          description: "Notification type:\n  * `0` - DAILY_MENU_SMS\n    * `1` - UPCOMING_EVENT_SMS\n"
   securitySchemes:
     bearerAuth:
       type: http
