@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.2ndkitchen.com/swaggers/indexingservice.yaml",
+ "requested_url": "https://docs.2ndkitchen.com/swaggers/indexingservice.yaml",
+ "status": 200,
+ "content_type": "application/x-yaml",
+ "bytes": 5531,
+ "sha256": "eb616828950b2aae6ebd85f25507104b9fb5790ca120d22001779fd4e9e2cc6f",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

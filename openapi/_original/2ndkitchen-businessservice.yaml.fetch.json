@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.2ndkitchen.com/swaggers/businessservice.yaml",
+ "requested_url": "https://docs.2ndkitchen.com/swaggers/businessservice.yaml",
+ "status": 200,
+ "content_type": "application/x-yaml",
+ "bytes": 12047,
+ "sha256": "f85b13a9eb4d2a0cf9215c3eb6768528abf16c94401db358b2ec665d70806c27",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.2ndkitchen.com/swaggers/paymentservice.yaml",
+ "requested_url": "https://docs.2ndkitchen.com/swaggers/paymentservice.yaml",
+ "status": 200,
+ "content_type": "application/x-yaml",
+ "bytes": 2766,
+ "sha256": "4cf269d43270d4f64325f1f1e1bae86b7554c7b72c82e81b4861fc08cdc2e7d8",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
