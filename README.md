@@ -64,6 +64,79 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-2ndKitchen is a company surfaced as a portfolio company of techstars and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+> **Acquired or rebranded.** This company was acquired, merged or renamed. Its API, if it still exists, is offered under another name. This profile is kept as a historical record and is not maintained or rated.
 
-Backed by: techstars — https://2ndkitchen.com/
+2ndKitchen was a Chicago-based food-technology startup (Techstars '18) that let businesses without an on-site kitchen — bars, breweries, hotels, and apartment communities — offer custom food menus sourced from nearby partner restaurants, handling ordering, pricing, payment, and delivery on their behalf. The company was acquired by REEF Technology in December 2021 and its 2ndkitchen.com domain now redirects to reeftechnology.com. This API Evangelist profile captures the set of nine microservice OpenAPI definitions still published on the legacy Swagger UI at docs.2ndkitchen.com (authentication, business, user, restaurant, order, pricing, payment, delivery, and indexing services), preserved here as a historical record of the platform's API surface.
+
+**Areas:** Company · Food Technology · Ghost Kitchen · Restaurant · Food Delivery · Ordering · Payments · Hospitality · Techstars · Acquired
+
+## 2ndKitchen on APIs.io (historical record)
+
+Everything profiled for 2ndKitchen is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/2ndkitchen/](https://apis.io/providers/2ndkitchen/)** — or go straight to one of the APIs or properties below.
+
+### APIs (12)
+
+- [2ndKitchen Authentication API](https://apis.io/apis/2ndkitchen/2ndkitchen-authentication-api/) — The Authentication API from 2ndKitchen — 5 operation(s) for authentication.
+- [2ndKitchen Brand API](https://apis.io/apis/2ndkitchen/2ndkitchen-brand-api/) — The Brand API from 2ndKitchen — 1 operation(s) for brand.
+- [2ndKitchen Business API](https://apis.io/apis/2ndkitchen/2ndkitchen-business-api/) — The Business API from 2ndKitchen — 1 operation(s) for business.
+- [2ndKitchen Coupons API](https://apis.io/apis/2ndkitchen/2ndkitchen-coupons-api/) — The Coupons API from 2ndKitchen — 1 operation(s) for coupons.
+- [2ndKitchen Deliveries API](https://apis.io/apis/2ndkitchen/2ndkitchen-deliveries-api/) — The Deliveries API from 2ndKitchen — 1 operation(s) for deliveries.
+- [2ndKitchen Orders API](https://apis.io/apis/2ndkitchen/2ndkitchen-orders-api/) — The Orders API from 2ndKitchen — 3 operation(s) for orders.
+- [2ndKitchen Payment API](https://apis.io/apis/2ndkitchen/2ndkitchen-payment-api/) — The Payment API from 2ndKitchen — 1 operation(s) for payment.
+- [2ndKitchen Product API](https://apis.io/apis/2ndkitchen/2ndkitchen-product-api/) — The Product API from 2ndKitchen — 4 operation(s) for product.
+- [2ndKitchen Products API](https://apis.io/apis/2ndkitchen/2ndkitchen-products-api/) — The Products API from 2ndKitchen — 1 operation(s) for products.
+- [2ndKitchen Restaurant API](https://apis.io/apis/2ndkitchen/2ndkitchen-restaurant-api/) — The Restaurant API from 2ndKitchen — 1 operation(s) for restaurant.
+- [2ndKitchen Restaurants API](https://apis.io/apis/2ndkitchen/2ndkitchen-restaurants-api/) — The Restaurants API from 2ndKitchen — 1 operation(s) for restaurants.
+- [2ndKitchen Users API](https://apis.io/apis/2ndkitchen/2ndkitchen-users-api/) — The Users API from 2ndKitchen — 4 operation(s) for users.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Collections (12)
+
+Postman and Open Collection request collections.
+
+- [2ndKitchen - Service Authentication API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-authentication-api/)
+- [2ndKitchen - Service Authentication Brand API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-brand-api/)
+- [2ndKitchen - Service Authentication Business API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-business-api/)
+- [2ndKitchen - Service Authentication Coupons API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-coupons-api/)
+- [2ndKitchen - Service Authentication Deliveries API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-deliveries-api/)
+- [2ndKitchen - Service Authentication Orders API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-orders-api/)
+- [2ndKitchen - Service Authentication Payment API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-payment-api/)
+- [2ndKitchen - Service Authentication Product API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-product-api/)
+- [2ndKitchen - Service Authentication Products API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-products-api/)
+- [2ndKitchen - Service Authentication Restaurant API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-restaurant-api/)
+- [2ndKitchen - Service Authentication Restaurants API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-restaurants-api/)
+- [2ndKitchen - Service Authentication Users API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-users-api/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [2Ndkitchen Authentication](https://apis.io/security/2ndkitchen/2ndkitchen-authentication/)
+- [2Ndkitchen Domain Security](https://apis.io/security/2ndkitchen/2ndkitchen-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://2ndkitchen.com/)
+- [Documentation](https://docs.2ndkitchen.com/)
+- [API reference](https://docs.2ndkitchen.com/)
+
+## API Evangelist rating
+
+**Not rated** — this company is recorded as acquired or rebranded, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for 2ndKitchen: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/2ndkitchen/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
