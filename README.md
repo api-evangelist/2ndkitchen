@@ -110,12 +110,18 @@ Postman and Open Collection request collections.
 - [2ndKitchen - Service Authentication Restaurants API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-restaurants-api/)
 - [2ndKitchen - Service Authentication Users API](https://apis.io/collections/2ndkitchen/open-2ndkitchen-users-api/)
 
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [2ndKitchen API Rules](https://apis.io/rules/2ndkitchen/2ndkitchen-rules/)
+
 #### Security (2)
 
 Authentication, trust centre, and vulnerability disclosure.
 
-- [2Ndkitchen Authentication](https://apis.io/security/2ndkitchen/2ndkitchen-authentication/)
-- [2Ndkitchen Domain Security](https://apis.io/security/2ndkitchen/2ndkitchen-domain-security/)
+- [2ndKitchen Authentication](https://apis.io/security/2ndkitchen/2ndkitchen-authentication/)
+- [2ndKitchen Domain Security](https://apis.io/security/2ndkitchen/2ndkitchen-domain-security/)
 
 ## Where to find this API
 
